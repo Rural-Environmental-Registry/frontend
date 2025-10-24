@@ -1,0 +1,1678 @@
+{
+  "defaultlanguage": "en-us",
+  "en-us": {
+    "common": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "homepage": {
+      "title": "Choose the option based on what you want to do.",
+      "registerProperty": "Register property",
+      "properties": "Properties",
+      "profile": "Profile",
+      "learnMore": "Learn more about the project.",
+      "demoBannerTitle": "Information.",
+      "demoBanner": " This environment is for demonstration purposes. Data is deleted daily and should not be considered permanent.",
+      "avatar": {
+        "title": "My account",
+        "profile": "Profile",
+        "logout": "Logout"
+      }
+    },
+    "wms": {
+      "territorialDivision": "Territorial Division",
+      "territorialDivision_layers": {
+        "brazil": "Brazil",
+        "state": "State",
+        "municipality": "Municipality"
+      },
+      "declaredRuralProperties": "Declared Rural Properties",
+      "declaredRuralProperties_layers": {
+        "ruralProperties": "Rural Properties",
+        "ruralPropertiesAgrarian": "Rural Properties from Agrarian Reform Settlements",
+        "traditionalTerritory": "Traditional Territory of Peoples and Communities"
+      },
+      "declaredLandCover": "Declared Land Cover",
+      "declaredLandCover_layers": {
+        "consolidatedArea": "Consolidated Area",
+        "nativeVegetation": "Remaining Native Vegetation",
+        "fallowArea": "Fallow Area"
+      }
+    },
+    "register": {
+      "step": "Step",
+      "steps": {
+        "propertyMap": "Property map",
+        "registrarDetails": "Registrar's details",
+        "landholdersInformation": "Landholder's information",
+        "ruralProperties": "Rural properties",
+        "propertyRights": "Property rights"
+      },
+      "propertyMap": {
+        "card": "Register property",
+        "cardSubtitle": "Vectorization of information related to areas."
+      },
+      "registrarDetails": {
+        "card": "REGISTRAR'S DETAILS",
+        "cardSubtitle": "Fill in the information of the person responsible for doing the register (landholder, technical assistant, government officer, others).",
+        "data": "Data",
+        "representativeData": "Representative Data",
+        "representativeDataSubtitle": "Representative: In the Rural Environmental Registry (RER), the representative is an individual authorized by the property owner or landholder to act on their behalf at all stages of the registration process.",
+        "form": {
+          "id": "Personal ID",
+          "dateOfBirth": "Date of birth",
+          "name": "Name",
+          "mothersName": "Mother's name",
+          "options": {
+            "one": "I do not have a representative",
+            "two": "I have a representative and he/she is the registrar",
+            "three": "I have a representative and he/she is not the registrar"
+          },
+          "required": "(Required)"
+        },
+        "registrarMustBeDifferentFromRepresentative": "Registrar must be different from Representative"
+      },
+      "landholdersInformation": {
+        "card": "LANDHOLDERS INFORMATION",
+        "cardSubtitle": "Fill in the information about the landholder or land owner. This person is legally responsible for the land being registered.",
+        "form": {
+          "id": "Personal ID",
+          "landholderLegalPersonality": {
+            "label": "Legal personality of landholder",
+            "options": { "one": "Natural persons", "two": "Legal entities" }
+          },
+          "chooseLandholderInfoMethod": {
+            "label": "Choose a way to add landholder's information",
+            "tooltip": "Select how you want to provide the landholder's details: manually entering the data or importing from a file.",
+            "options": { "one": "Fill in data", "two": "Import data files" }
+          },
+          "dateOfBirth": "Date of birth",
+          "name": "Name",
+          "mothersName": "Mother's name",
+          "optional": "(Optional)"
+        },
+        "table": {
+          "header": {
+            "legalPersonality": "Legal personality",
+            "taxpayer": "Taxpayer ID",
+            "nameCompany": "Name",
+            "actions": "Actions"
+          },
+          "naturalPerson": "Natural Person",
+          "legalEntity": "Legal Entity",
+          "emptyData": "There is no data to show."
+        },
+        "addNewLandholder": "Add New Landholder",
+        "editingLandholder": "Editing Landholder",
+        "clear": "Clear",
+        "saveChanges": "Save changes",
+        "cancel": "Cancel",
+        "addOwnerHolder": "Add owner/holder",
+        "ListOfOwnersHolders": "List of Owners/Holders",
+        "warningModal": "Please add at least one landholder.",
+        "warningModalTitle": "Attention",
+        "warningModalRequired": "All fields must be filled in before saving.",
+        "warningModalDelete": "Are you sure you want to delete the Owner/Holder?"
+      },
+      "ruralProperty": {
+        "card": "RURAL PROPERTY",
+        "cardSubtitle": "Fill in the information of the rural property.",
+        "form": {
+          "propertyName": "Property Name",
+          "state": "State",
+          "statePlaceHolder": "Select the state",
+          "city": "City",
+          "cityPlaceHolder": "Select the city",
+          "zipCode": "Zip Code",
+          "locationZonev": "Location Zone (Optional)",
+          "locationZonevOption": { "urban": "Urban", "rural": "Rural" },
+          "descriptionOfPropertyAcess": "Description of Property Access (Optional)",
+          "descriptionOfPropertyAcessTooltip": "Provide details about how the property can be accessed, such as roads, landmarks, or specific directions. This field is optional."
+        },
+        "cardMailingAddress": "Mailing Address",
+        "formMailingAddress": {
+          "recipientName": "Recipient Name",
+          "addressStreet": "Address/Street",
+          "addressStreetTooltip": "Enter the official address or street name where the property is located.",
+          "number": "Number",
+          "additionalInformation": "Additional Information (Optional)",
+          "neighborhood": "Neighborhood",
+          "zipCode": "Zip Code",
+          "state": "State",
+          "statePlaceHolder": "Select the state",
+          "city": "City",
+          "cityPlaceHolder": "Select the city",
+          "email": "E-mail (Optional)",
+          "contactNumber": "Contact Number (Optional)"
+        }
+      },
+      "propertyRights": {
+        "card": "OWNER DETAILS AND DOCUMENTATION.",
+        "cardSubtitle": "Provide information of the property or landholding documentation.",
+        "confirm": "Are you sure you want to send register?",
+        "sucess": "Data registered successfully. The receipt will be generated automatically",
+        "form": {
+          "addNewProperty": "Add New Property",
+          "editingProperty": "Editing Property",
+          "propertyOrLandholding": "Property or Landholding",
+          "propertyOrLandholdingOption": { "property": "Property", "landholding": "Landholding" },
+          "registeredPropertyName": "Registered Property Name",
+          "area": "Area",
+          "documentType": "Document Type",
+          "documentTypePlaceHolder": "Select the document type",
+          "documentTypeOptions": {
+            "deed": "Deed",
+            "titledeed": "Title Deed",
+            "purchaseandsaleagreement": "Purchase and Sale Agreement"
+          },
+          "titleDeedOrLandDocument": "Title deed/ Land Document",
+          "titleDeedOrLandDocumentTooltip": "Official legal document proving ownership of a property or land. Ensure it is properly registered and up to date.",
+          "documentDate": "Document Date",
+          "book": "Book",
+          "page": "Page",
+          "stateOfTheNotaryOffice": "State of The Notary Office",
+          "stateOfTheNotaryOfficePlaceHolder": "Select the state",
+          "cityOfTheNotaryOffice": "City of The Notary Office",
+          "cityOfTheNotaryOfficePlaceHolder": "Select the city",
+          "nationalRuralLandRegistrySystemCode": "National Rural Land Registry System Code",
+          "nationalRuralLandRegistrySystemCodeTooltip": "Unique identifier assigned to rural properties within the National Rural Land Registry System.",
+          "propertyCertification": "Property Certification",
+          "propertyCertificationTooltip": "Certification that verifies the legal status and compliance of the property according to national regulations.",
+          "nationalRuralPropertyRegistrationNumber": "National Rural Property Registration Number",
+          "nationalRuralPropertyRegistrationNumberTooltip": "Official registration number of the rural property, used for legal and administrative purposes.",
+          "legalReserve": {
+            "label": "Does it have a registered Legal Reserve and/or an approved but not registered Legal Reserve?",
+            "legalReserveOptions": { "yes": "Yes", "no": "No" }
+          },
+          "legalReserve2": "Does not have a registered Legal Reserve and/or an approved but not registered Legal Reserve.",
+          "clear": "Clear",
+          "add": "Add",
+          "cancel": "Cancel",
+          "saveChanges": "Save Changes",
+          "required": "(Required)"
+        },
+        "listOfInformedLandDocuments": "List of informed land documents",
+        "list": {
+          "type": {
+            "title": "Type",
+            "property": "Property",
+            "landholding": "Landholding"
+          },
+          "titleDeedOrLandDocument": "Title deed/ Land Document",
+          "propertyName": "Property Name",
+          "stateAndCityOfTheNotaryOffice": "State and City of the Notary Office",
+          "actions": "Actions",
+          "noDataToShow": "There is no data to show."
+        },
+        "confirmModal": "Are you sure you want to send register?",
+        "confirmModalOverAreaLimitWarning": "The property area specified in the documents differs from the area calculated on the map.",
+        "confirmModalOverAreaLimitMap": "Area from map: ",
+        "confirmModalOverAreaLimitDocs": "Area from documents: ",
+        "confirmModalOverAreaLimitRule": "As a rule, the difference should not exceed: ",
+        "confirmModalOverAreaLimitQuestion": "Do you wish to proceed with the registration?",
+        "deletePropertyInformationModal": "Are you sure you want to delete the entered land documents?",
+        "hasBlankFields": "All fields must be filled in before saving.",
+        "savingData": "Saving property's data.",
+        "successModal": "Data registered successfully",
+        "invalidForm": "Please add at least one Land Document",
+        "requestError": "You are about to submit a form with invalid data. Please check the fields and try again.",
+        "previousStepsBlankFields": "There are required fields in previous steps that need to be filled",
+        "noMapData": "No map data found. Please return to the property map step to vectorize the required areas.",
+        "successModalTitle": "Success",
+        "attentionModalTitle": "Attention",
+        "modalOverAreaLimitTitle": "Area difference exceeded",
+        "savingDataModalTitle": "Wait",
+        "areaDifferenceExceeded": "Please check the information provided and try again.",
+        "serverError": "Unexpected server error. Please try again.",
+        "connectionError": "Connection error or server unavailable. Please check your connection and try again.",
+        "validationError": {
+          "header": "There are required fields that need to be filled before submitting:",
+          "step": "Step",
+          "fields": "Required fields",
+          "instruction": "Please go back to the previous steps and fill in all required fields before proceeding."
+        }
+      },
+      "errors": {
+        "isRequired": "is required",
+        "dateUpperLimit": "must be less than or equal to today's date",
+        "dateFormat": "must be in yyyy-MM-DD format",
+        "checkValue": "Check the value"
+      },
+      "closeButton": "Close",
+      "confirmButton": "OK",
+      "nextButton": "Next",
+      "previousButton": "Previous",
+      "saveButton": "Save",
+      "register": "Register",
+      "route": "Register property",
+      "route-editing": "Edit property",
+      "route-editing-cancel-button": "Cancel editing"
+    },
+    "properties": {
+      "propertyCard": {
+        "code": "Code",
+        "state": "State",
+        "city": "City",
+        "details": "Details",
+        "registration": "Receipt"
+      },
+      "filter": {
+        "filter": "Filter",
+        "location": "Location",
+        "stateDistrict": "State",
+        "selectState": "Select State",
+        "municipality": "City",
+        "selectCity": "Select City",
+        "details": "Details",
+        "propertyName": "Property Name",
+        "code": "Property Registration Number",
+        "add": "Add",
+        "landholder": "Landholder",
+        "ownersName": "Landholder Name",
+        "ownersIdentifier": "Landholder Identifier",
+        "propertyNumbers": "Property Numbers",
+        "landholderId": "Landholder ID",
+        "clean": "Clean",
+        "apply": "Apply"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next"
+      },
+      "route": "Rural Properties",
+      "propertyInfo": "Only properties where you are the owner or representative will be displayed.",
+      "propertyCardTitle": "REGISTER MORE PROPERTIES",
+      "registerProperty": "Register Property"
+    },
+    "details": {
+      "property": "PROPERTY",
+      "propertyName": "Property Name",
+      "code": "Code",
+      "state": "State",
+      "city": "City",
+      "zipCode": "Zip Code",
+      "locationZone": "Location Zone",
+      "descriptionOfPropertyAccess": "Description of Property Access",
+      "editRegistry": "Edit",
+      "downloadReceipt": "Download Receipt",
+      "registeredAreas": "REGISTERED AREAS",
+      "owner": "OWNER",
+      "name": "Name",
+      "id": "ID",
+      "dateOfBirth": "Date of birth",
+      "ownerOrHolder": "Owner or Holder",
+      "mothersName": "Mother's name",
+      "registrars": "REGISTRAR'S",
+      "titleDeedOrLandDocument": "Title deed/Land Document",
+      "documentType": "Document Type",
+      "registeredPropertyName": "Registered Property Name",
+      "documentArea": "Document Area",
+      "cityStateOfNotaryOffice": "City/State of Notary Office",
+      "route": "Property Details"
+    },
+    "footer": "RER - Rural Environmental Registry.",
+    "mapComponents": {
+      "areasDisplayPanel": {
+        "title": "Vectorized Areas",
+        "hideLayer": "Hide layer",
+        "showLayer": "Show layer",
+        "layerColorTitle": "Layer color",
+        "editLayer": "Edit layer",
+        "removeLayer": "Remove layer",
+        "notApplicable": "N/A",
+        "apiMessagesTitle": "API Messages:",
+        "sourceIdPrefix": "Source ID:"
+      },
+      "vectorizationToolPanel": {
+        "limitReached": "Limit reached ({current}/{max}) - {layerName}",
+        "limitReachedShort": "Maximum: {max}",
+        "title": "Select Layer for Vectorization",
+        "noLayerGroupsConfigured": "No layer groups configured.",
+        "selectLayerFromGroup": "Please select a layer from the group above.",
+        "clickGroupToSeeLayers": "Click a group to see available layers.",
+        "noLayersInGroup": "No layers available in this group.",
+        "layerInfoDefault": "No additional information for {layerName}.",
+        "layerInfoTitle": "Info: {layerName}",
+        "selectedLayer": "Selected Layer",
+        "geometryTypeForDrawing": "Geometry type for drawing",
+        "fixedParameters": {
+          "title": "Fixed Parameters",
+          "keys": {
+            "buffer_size": "Buffer Size",
+            "options": "Options"
+          }
+        },
+        "requiredLayerIndicator": "Required layer"
+      },
+      "propertyMapView": {
+        "processing": "Processing...",
+        "areaNotAvailable": "Area not available",
+        "loaded": "Loaded",
+        "apiError": "API Error",
+        "maxInstancesAlert": "Layer \"{displayName}\" can only be drawn {maxInstances} time(s).",
+        "requiredLayersValidationTitle": "Required Layers Validation",
+        "requiredLayersValidationMessage": "The following required layers must be vectorized before proceeding:",
+        "requiredLayersValidationListItem": "• {displayName}",
+        "processingApi": "Processing API...",
+        "propertyAreaRequired": "Property area(ha) is required."
+      }
+    },
+    "layers": {
+      "invalidPolygon": "The layer being applied is not a valid polygon. Please verify and try again.",
+      "invalidType": "The layer being applied has an incompatible geometry with the expected one. Please verify and try again.",
+      "layerRemoval": "One or more layers ({layers}) presented errors and were removed from the map after being processed. Please verify and try again.",
+      "base": {
+        "esriImagery": { "name": "Esri Imagery" },
+        "openStreetMap": { "name": "OpenStreetMap" }
+      },
+      "custom": {
+        "territorialDivision": { "name": "Territorial Division" },
+        "brazil": { "name": "Brazil" },
+        "state": { "name": "State" },
+        "municipality": { "name": "Municipality" },
+        "declaredRuralProperties": { "name": "Declared Rural Properties" },
+        "ruralProperties": { "name": "Rural Properties" },
+        "ruralPropertiesAgrarian": { "name": "Rural Properties from Agrarian Reform Settlements" },
+        "traditionalTerritory": { "name": "Traditional Territory of Peoples and Communities" },
+        "declaredLandCover": { "name": "Declared Land Cover" },
+        "consolidatedArea": { "name": "Consolidated Area" },
+        "nativeVegetation": { "name": "Remaining Native Vegetation" },
+        "fallowArea": { "name": "Fallow Area" }
+      },
+      "vectorization": {
+        "propertyGroup": {
+          "groupName": "Property",
+          "description": "Select a layer to draw and process property areas."
+        },
+        "ruralProperty": {
+          "displayName": "Rural Property Area",
+          "description": "Vectorize the rural property area."
+        },
+        "propertyHeadquarter": {
+          "displayName": "Property Headquarter",
+          "description": "Mark the location of the property headquarter."
+        },
+        "landCoverGroup": {
+          "groupName": "Land Cover",
+          "description": "Select land cover layers to draw and process."
+        },
+        "consolidatedAreaVec": {
+          "displayName": "Consolidated Area",
+          "description": "Vectorize the consolidated area of the property."
+        },
+        "nativeVegetationVec": {
+          "displayName": "Remaining Native Vegetation",
+          "description": "Vectorize the remaining native vegetation of the property."
+        },
+        "hydrographyGroup": {
+          "groupName": "Hydrography",
+          "description": "Select hydrography layers to draw and process."
+        },
+        "river": {
+          "displayName": "River",
+          "description": "Vectorize the river area of the property.",
+          "tooltip": "Permanent Protected Area (River)"
+        },
+        "riverUpTo10m": {
+          "displayName": "River (up to 10m)",
+          "description": "Vectorize the river area of the property.",
+          "tooltip": "Permanent Protected Area (River up to 10m)"
+        },
+        "riverSpring": {
+          "displayName": "River spring",
+          "description": "Vectorize the spring area of the property.",
+          "tooltip": "Permanent Protected Area (River Spring)"
+        },
+        "legalReserveGroup": {
+          "groupName": "Legal Reserve",
+          "description": "Select a layer to draw and process."
+        },
+        "legalReserve": {
+          "displayName": "Legal Reserve",
+          "description": "Vectorize the legal reserve area of the property."
+        }
+      }
+    },
+    "leafletDraw": {
+      "draw": {
+        "toolbar": {
+          "actions": { "title": "Cancel drawing", "text": "Cancel" },
+          "finish": { "title": "Finish drawing", "text": "Finish" },
+          "undo": { "title": "Delete last point drawn", "text": "Delete last point" },
+          "buttons": {
+            "polyline": "Draw a polyline",
+            "polygon": "Draw a polygon",
+            "rectangle": "Draw a rectangle",
+            "circle": "Draw a circle",
+            "marker": "Draw a marker",
+            "circlemarker": "Draw a circlemarker"
+          }
+        },
+        "handlers": {
+          "circle": {
+            "tooltip": { "start": "Click and drag to draw circle." },
+            "radius": "Radius"
+          },
+          "circlemarker": { "tooltip": { "start": "Click map to place circle marker." } },
+          "marker": { "tooltip": { "start": "Click map to place marker." } },
+          "polygon": {
+            "tooltip": {
+              "start": "Click to start drawing shape.",
+              "cont": "Click to continue drawing shape.",
+              "end": "Click first point to close this shape."
+            }
+          },
+          "polyline": {
+            "error": "<strong>Error:</strong> shape edges cannot cross!",
+            "tooltip": {
+              "start": "Click to start drawing line.",
+              "cont": "Click to continue drawing line.",
+              "end": "Click last point to finish line."
+            }
+          },
+          "rectangle": { "tooltip": { "start": "Click and drag to draw rectangle." } },
+          "simpleshape": { "tooltip": { "end": "Release mouse to finish drawing." } }
+        }
+      },
+      "edit": {
+        "toolbar": {
+          "actions": {
+            "save": { "title": "Save changes.", "text": "Save" },
+            "cancel": { "title": "Cancel editing, discards all changes.", "text": "Cancel" },
+            "clearAll": { "title": "Clear all layers.", "text": "Clear All" }
+          },
+          "buttons": {
+            "edit": "Edit layers.",
+            "editDisabled": "No layers to edit.",
+            "remove": "Delete layers.",
+            "removeDisabled": "No layers to delete."
+          }
+        },
+        "handlers": {
+          "edit": {
+            "tooltip": {
+              "text": "Drag handles or markers to edit features.",
+              "subtext": "Click cancel to undo changes."
+            }
+          },
+          "remove": { "tooltip": { "text": "Click on a feature to remove." } }
+        }
+      }
+    },
+    "descriptiveMemorial": {
+      "title": "Coordinates",
+      "addPoint": "Add Point",
+      "editPoint": "Edit Point",
+      "removePoint": "Remove Point",
+      "actions": "Actions",
+      "clearGeometries": "Clear Geometries",
+      "index": "Index",
+      "x": "X",
+      "y": "Y",
+      "azimuth": "Azimuth",
+      "distance": "Distance",
+      "noPoints": "No points added",
+      "addPointTitle": "Add Point",
+      "editPointTitle": "Edit Point",
+      "removePointTitle": "Remove Point",
+      "clearGeometriesTitle": "Clear Geometries",
+      "addPointDescription": "Add a new point to the list",
+      "editPointDescription": "Edit the selected point",
+      "removePointDescription": "Remove the selected point",
+      "clearGeometriesDescription": "Clear all geometries from the map",
+      "memorialDescriptive": "Descriptive Memorial",
+      "referenceSystem": "Reference System",
+      "selectSystem": "Select system",
+      "sirgas2000": "SIRGAS 2000",
+      "coordinateFormat": "Coordinate Format",
+      "selectFormat": "Select format",
+      "decimalDegrees": "Decimal Degrees (DD)",
+      "degreesMinutesSeconds": "Degrees, Minutes, Seconds (DMS)",
+      "manualInput": "Manual Input",
+      "insertCoordinates": "Insert Coordinates",
+      "xLongitude": "X (Longitude)",
+      "yLatitude": "Y (Latitude)",
+      "degrees": "Degrees",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "addedPoints": "Added Points",
+      "finalizeGeometry": "Finalize Geometry",
+      "csvUpload": "CSV Upload",
+      "csvFileUpload": "CSV File Upload",
+      "dragCsvFile": "Drag CSV file or click to upload",
+      "csvColumnsInfo": "The file must contain the columns: X, Y, AZIMUTH, DISTANCE",
+      "applyCsvCoordinates": "Apply CSV Coordinates",
+      "placeholderLongitude": "e.g., -46.6333",
+      "placeholderLatitude": "e.g., -23.5505",
+      "placeholderAzimuth": "e.g., 90",
+      "placeholderDistance": "e.g., 100",
+      "placeholderDegrees": "Degrees",
+      "placeholderMinutes": "Minutes",
+      "placeholderSeconds": "Seconds",
+      "errorXYRequired": "X and Y are required for the first point",
+      "errorDegreesRequired": "Degrees are required for the first point",
+      "errorFirstRowXY": "The first row of the CSV must contain X and Y coordinates",
+      "errorProvideCoordinatesOrAzimuthDistance": "Provide coordinates or Azimuth and Distance"
+    }
+  },
+  "pt-br": {
+    "common": {
+      "active": "Ativo",
+      "inactive": "Inativo"
+    },
+    "homepage": {
+      "demoBannerTitle": "Informação.",
+      "demoBanner": " Este ambiente é de demonstração. Os dados são apagados diariamente e não devem ser considerados permanentes.",
+      "title": "Escolha a opção com base no que você deseja fazer.",
+      "registerProperty": "Registrar propriedade",
+      "properties": "Propriedades",
+      "profile": "Perfil",
+      "learnMore": "Saiba mais sobre o projeto",
+      "avatar": { "title": "Minha conta", "profile": "Perfil", "logout": "Sair" }
+    },
+    "wms": {
+      "territorialDivision": "Divisão Territorial",
+      "territorialDivision_layers": {
+        "brazil": "Brasil",
+        "state": "Estado",
+        "municipality": "Município"
+      },
+      "declaredRuralProperties": "Imóveis Rurais Declarados",
+      "declaredRuralProperties_layers": {
+        "ruralProperties": "Imóveis Rurais",
+        "ruralPropertiesAgrarian": "Imóveis Rurais de Assentamentos da Reforma Agrária",
+        "traditionalTerritory": "Território Tradicional de Povos e Comunidades Tradicionais"
+      },
+      "declaredLandCover": "Cobertura do Solo Declarada",
+      "declaredLandCover_layers": {
+        "consolidatedArea": "Área Consolidada",
+        "nativeVegetation": "Vegetação Nativa Remanescente",
+        "fallowArea": "Área de Pousio"
+      }
+    },
+    "register": {
+      "step": "Etapa",
+      "steps": {
+        "propertyMap": "Mapa da propriedade",
+        "registrarDetails": "Detalhes do declarante",
+        "landholdersInformation": "Informações do detentor do imóvel",
+        "ruralProperties": "Dados do imóvel rural",
+        "propertyRights": "Documentos de posse ou propriedade"
+      },
+      "propertyMap": {
+        "card": "Cadastrar Imóvel Rural",
+        "cardSubtitle": "Vetorização de informações relacionadas às áreas do imóvel."
+      },
+      "registrarDetails": {
+        "card": "DADOS DO DECLARANTE",
+        "cardSubtitle": "Preencha as informações da pessoa que está realizando a declaração (detentor do imóvel, técnico responsável, servidor público ou outros).",
+        "data": "Dados",
+        "representativeData": "Dados do Representante",
+        "representativeDataSubtitle": "Representante: No Cadastro Ambiental Rural (CAR) o representante é a pessoa física autorizada pelo proprietário ou possuidor, a representá-lo em todas as fases do processo de inscrição e retificação do CAR.",
+        "form": {
+          "id": "ID Pessoal",
+          "dateOfBirth": "Data de nascimento",
+          "name": "Nome",
+          "mothersName": "Nome da mãe",
+          "options": {
+            "one": "Não possuo representante",
+            "two": "Possuo representante e ele(a) é o declarante",
+            "three": "Possuo representante e ele(a) não é o declarante"
+          },
+          "required": "(Obrigatório)"
+        },
+        "registrarMustBeDifferentFromRepresentative": "Declarante deve ser diferente do Representante"
+      },
+      "landholdersInformation": {
+        "card": "INFORMAÇÕES DO PROPRIETÁRIO/POSSUIDOR",
+        "cardSubtitle": "Preencha as informações do proprietário ou possuidor. Esta pessoa é legalmente responsável pelo imóvel que está sendo cadastrado.",
+        "form": {
+          "id": "ID Pessoal",
+          "landholderLegalPersonality": {
+            "label": "Personalidade jurídica do proprietário/possuidor",
+            "options": { "one": "Pessoa física", "two": "Pessoa jurídica" }
+          },
+          "chooseLandholderInfoMethod": {
+            "label": "Escolha como adicionar as informações do proprietário/possuidor",
+            "tooltip": "Selecione como deseja fornecer os detalhes: preenchendo os dados ou importando de um arquivo.",
+            "options": { "one": "Preencher dados", "two": "Importar arquivos de dados" }
+          },
+          "dateOfBirth": "Data de nascimento",
+          "name": "Nome",
+          "mothersName": "Nome da mãe",
+          "optional": "(Opcional)"
+        },
+        "table": {
+          "header": {
+            "legalPersonality": "Personalidade jurídica",
+            "taxpayer": "CPF",
+            "nameCompany": "Nome",
+            "actions": "Ações"
+          },
+          "naturalPerson": "Pessoa Física",
+          "legalEntity": "Pessoa Jurídica",
+          "emptyData": "Não há dados para exibir."
+        },
+        "addNewLandholder": "Adicionar Novo Proprietário/Posseiro",
+        "editingLandholder": "Editando Proprietário/Posseiro",
+        "clear": "Limpar",
+        "saveChanges": "Salvar alterações",
+        "cancel": "Cancelar",
+        "addOwnerHolder": "Adicionar proprietário/possuidor",
+        "ListOfOwnersHolders": "Lista de Proprietários/Possuidores",
+        "warningModal": "Por favor, adicione pelo menos um proprietário/possuidor.",
+        "warningModalTitle": "Atenção",
+        "warningModalRequired": "Todos os campos devem ser preenchidos antes de salvar.",
+        "warningModalDelete": "Tem certeza de que deseja excluir o proprietário/possuidor?"
+      },
+      "ruralProperty": {
+        "card": "DADOS DO IMÓVEL RURAL",
+        "cardSubtitle": "Preencha as informações do imóvel rural.",
+        "form": {
+          "propertyName": "Nome do Imóvel",
+          "state": "Estado",
+          "statePlaceHolder": "Selecione o estado",
+          "city": "Município",
+          "cityPlaceHolder": "Selecione o município",
+          "zipCode": "CEP",
+          "locationZonev": "Zona de Localização (Opcional)",
+          "locationZonevOption": { "urban": "Urbana", "rural": "Rural" },
+          "descriptionOfPropertyAcess": "Descrição do Acesso ao Imóvel (Opcional)",
+          "descriptionOfPropertyAcessTooltip": "Forneça detalhes sobre como acessar a propriedade, como estradas, pontos de referência ou direções específicas. Este campo é opcional."
+        },
+        "cardMailingAddress": "Endereço para Correspondência",
+        "formMailingAddress": {
+          "recipientName": "Nome do Destinatário",
+          "addressStreet": "Logradouro",
+          "addressStreetTooltip": "Insira o endereço oficial ou nome da rua onde o imóvel está localizado.",
+          "number": "Número",
+          "additionalInformation": "Complemento (Opcional)",
+          "neighborhood": "Bairro",
+          "zipCode": "CEP",
+          "state": "Estado",
+          "statePlaceHolder": "Selecione o estado",
+          "city": "Município",
+          "cityPlaceHolder": "Selecione o município",
+          "email": "E-mail (Opcional)",
+          "contactNumber": "Telefone de Contato (Opcional)"
+        }
+      },
+      "propertyRights": {
+        "card": "DOCUMENTOS DE POSSE OU PROPRIEDADE",
+        "cardSubtitle": "Forneça as informações da documentação do imóvel ou posse.",
+        "confirm": "Tem certeza que deseja enviar o cadastro?",
+        "sucess": "Dados cadastrados com sucesso. O recibo será gerado automaticamente.",
+        "form": {
+          "addNewProperty": "Adicionar Novo Documento",
+          "editingProperty": "Editando Documento",
+          "propertyOrLandholding": "Tipo de Documento",
+          "propertyOrLandholdingOption": { "property": "Propriedade", "landholding": "Posse" },
+          "registeredPropertyName": "Nome do Imóvel no Registro",
+          "area": "Área (ha)",
+          "documentType": "Tipo de Comprovação",
+          "documentTypePlaceHolder": "Selecione o tipo de comprovação",
+          "documentTypeOptions": {
+            "deed": "Escritura",
+            "titledeed": "Título Definitivo",
+            "purchaseandsaleagreement": "Contrato de Compra e Venda"
+          },
+          "titleDeedOrLandDocument": "Número do Documento",
+          "titleDeedOrLandDocumentTooltip": "Documento legal que comprova a propriedade ou posse. Garanta que esteja devidamente registrado e atualizado.",
+          "documentDate": "Data do Documento",
+          "book": "Livro",
+          "page": "Folha",
+          "stateOfTheNotaryOffice": "UF do Cartório",
+          "stateOfTheNotaryOfficePlaceHolder": "Selecione o estado",
+          "cityOfTheNotaryOffice": "Município do Cartório",
+          "cityOfTheNotaryOfficePlaceHolder": "Selecione o município",
+          "nationalRuralLandRegistrySystemCode": "Código do Imóvel no SNCR (INCRA)",
+          "nationalRuralLandRegistrySystemCodeTooltip": "Identificador único atribuído aos imóveis rurais no Sistema Nacional de Cadastro Rural.",
+          "propertyCertification": "Matrícula do Imóvel",
+          "propertyCertificationTooltip": "Número da matrícula do imóvel no cartório de registro de imóveis.",
+          "nationalRuralPropertyRegistrationNumber": "Código do Cadastro Fundiário",
+          "nationalRuralPropertyRegistrationNumberTooltip": "Número de registro do imóvel rural no Cadastro Ambiental Rural.",
+          "legalReserve": {
+            "label": "Possui Reserva Legal averbada e/ou aprovada não averbada?",
+            "legalReserveOptions": { "yes": "Sim", "no": "Não" }
+          },
+          "legalReserve2": "Não possui Reserva Legal averbada ou aprovada não averbada.",
+          "clear": "Limpar",
+          "add": "Adicionar",
+          "cancel": "Cancelar",
+          "saveChanges": "Salvar Alterações",
+          "required": "(Obrigatório)"
+        },
+        "listOfInformedLandDocuments": "Lista de documentos informados",
+        "list": {
+          "type": {
+            "title": "Tipo",
+            "property": "Propriedade",
+            "landholding": "Posse"
+          },
+          "titleDeedOrLandDocument": "Número do Documento",
+          "propertyName": "Nome da Propriedade",
+          "stateAndCityOfTheNotaryOffice": "UF e Município do Cartório",
+          "actions": "Ações",
+          "noDataToShow": "Não há dados para exibir."
+        },
+        "confirmModal": "Tem certeza de que deseja enviar o cadastro?",
+        "confirmModalOverAreaLimitWarning": "A área do imóvel informada nos documentos difere da área calculada no mapa.",
+        "confirmModalOverAreaLimitMap": "Área no mapa: ",
+        "confirmModalOverAreaLimitDocs": "Área nos documentos: ",
+        "confirmModalOverAreaLimitRule": "Por regra, a diferença não deveria ultrapassar: ",
+        "confirmModalOverAreaLimitQuestion": "Você deseja continuar com o cadastro?",
+        "deletePropertyInformationModal": "Tem certeza de que deseja excluir os documentos de terreno inseridos?",
+        "hasBlankFields": "Todos os campos devem ser preenchidos antes de salvar.",
+        "savingData": "Salvando dados da propriedade.",
+        "successModal": "Dados registrados com sucesso.",
+        "invalidForm": "Adicione pelo menos um Documento de Terra",
+        "requestError": "Você está prestes a enviar um formulário com dados inválidos. Verifique os campos e tente novamente.",
+        "previousStepsBlankFields": "Há campos obrigatórios nas etapas anteriores que precisam ser preenchidos",
+        "noMapData": "Nenhum dado do mapa foi encontrado. Retorne à etapa do mapa da propriedade para vetorizar as áreas obrigatórias.",
+        "successModalTitle": "Sucesso",
+        "attentionModalTitle": "Atenção",
+        "modalOverAreaLimitTitle": "Diferença de área excedida",
+        "savingDataModalTitle": "Aguarde",
+        "areaDifferenceExceeded": "Verifique os dados informados e tente novamente.",
+        "serverError": "Erro inesperado do servidor. Tente novamente.",
+        "connectionError": "Erro de conexão ou servidor indisponível. Verifique sua conexão e tente novamente.",
+        "validationError": {
+          "header": "Existem campos obrigatórios que precisam ser preenchidos antes do envio:",
+          "step": "Etapa",
+          "fields": "Campos obrigatórios",
+          "instruction": "Por favor, volte às etapas anteriores e preencha todos os campos obrigatórios antes de prosseguir."
+        }
+      },
+      "errors": {
+        "isRequired": "é obrigatório",
+        "dateUpperLimit": "deve ser menor ou igual à data de hoje",
+        "dateFormat": "deve estar no formato AAAA-MM-DD",
+        "checkValue": "Verifique o valor"
+      },
+      "closeButton": "Fechar",
+      "confirmButton": "OK",
+      "nextButton": "Avançar",
+      "previousButton": "Voltar",
+      "saveButton": "Salvar",
+      "register": "Cadastrar",
+      "route": "Cadastrar imóvel",
+      "route-editing": "Editar imóvel",
+      "route-editing-cancel-button": "Cancelar edição"
+    },
+    "properties": {
+      "propertyCard": {
+        "code": "Código",
+        "state": "Estado",
+        "city": "Município",
+        "details": "Detalhes",
+        "registration": "Registro"
+      },
+      "filter": {
+        "filter": "Filtro",
+        "location": "Localização",
+        "stateDistrict": "Estado",
+        "selectState": "Selecionar Estado",
+        "municipality": "Cidade",
+        "selectCity": "Selecionar Cidade",
+        "details": "Detalhes",
+        "propertyName": "Nome da Propriedade",
+        "code": "Número de Registro da Propriedade",
+        "add": "Adicionar",
+        "landholder": "Proprietário",
+        "ownersName": "Nome do Proprietário",
+        "ownersIdentifier": "Identificador do Proprietário",
+        "propertyNumbers": "Números da Propriedade",
+        "landholderId": "ID do Proprietário",
+        "clean": "Limpar",
+        "apply": "Aplicar"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Próximo"
+      },
+      "route": "Imóveis",
+      "propertyInfo": "Somente serão exibidas as propriedades em que você é proprietário(a) ou representante.",
+      "propertyCardTitle": "CADASTRAR MAIS IMÓVEIS",
+      "registerProperty": "Cadastrar Imóvel"
+    },
+    "details": {
+      "property": "IMÓVEL",
+      "propertyName": "Nome do Imóvel",
+      "code": "Código",
+      "state": "Estado",
+      "city": "Município",
+      "zipCode": "CEP",
+      "locationZone": "Zona de Localização",
+      "descriptionOfPropertyAccess": "Descrição do Acesso ao Imóvel",
+      "editRegistry": "Editar",
+      "downloadReceipt": "Baixar Recibo",
+      "registeredAreas": "ÁREAS CADASTRADAS",
+      "owner": "DETENTOR",
+      "name": "Nome",
+      "id": "CPF",
+      "dateOfBirth": "Data de Nascimento/Criação",
+      "ownerOrHolder": "Proprietário ou Posseiro",
+      "mothersName": "Nome da Mãe",
+      "registrars": "DECLARANTE",
+      "titleDeedOrLandDocument": "Número do Documento",
+      "documentType": "Tipo de Documento",
+      "registeredPropertyName": "Nome do Imóvel no Registro",
+      "documentArea": "Área do Documento",
+      "cityStateOfNotaryOffice": "Município/UF do Cartório",
+      "route": "Detalhes do Imóvel"
+    },
+    "footer": "CAR - Cadastro Ambiental Rural.",
+    "mapComponents": {
+      "areasDisplayPanel": {
+        "title": "Quadro de Áreas Vetorizadas",
+        "hideLayer": "Ocultar camada",
+        "showLayer": "Mostrar camada",
+        "layerColorTitle": "Cor da camada",
+        "editLayer": "Editar camada",
+        "removeLayer": "Remover camada",
+        "notApplicable": "N/D",
+        "apiMessagesTitle": "Mensagens da API:",
+        "sourceIdPrefix": "ID Origem:"
+      },
+      "vectorizationToolPanel": {
+        "limitReached": "Limite atingido ({current}/{max}) - {layerName}",
+        "limitReachedShort": "Máximo: {max}",
+        "title": "Selecionar Camada para Vetorizar",
+        "noLayerGroupsConfigured": "Nenhum grupo de camadas configurado.",
+        "selectLayerFromGroup": "Por favor, selecione uma camada do grupo acima.",
+        "clickGroupToSeeLayers": "Clique em um grupo para ver as camadas disponíveis.",
+        "noLayersInGroup": "Nenhuma camada disponível neste grupo.",
+        "layerInfoDefault": "Nenhuma informação adicional para {layerName}.",
+        "layerInfoTitle": "Informação: {layerName}",
+        "selectedLayer": "Camada Selecionada",
+        "geometryTypeForDrawing": "Tipo de geometria para desenho",
+        "fixedParameters": {
+          "title": "Parâmetros Fixos",
+          "keys": {
+            "buffer_size": "Tamanho do Buffer",
+            "options": "Opções"
+          }
+        },
+        "requiredLayerIndicator": "Camada obrigatória"
+      },
+      "propertyMapView": {
+        "processing": "Processando...",
+        "areaNotAvailable": "Área não disponível",
+        "loaded": "Carregado",
+        "apiError": "Erro na API",
+        "maxInstancesAlert": "A camada \"{displayName}\" só pode ser desenhada {maxInstances} vez(es).",
+        "requiredLayersValidationTitle": "Validação de Camadas Obrigatórias",
+        "requiredLayersValidationMessage": "As seguintes camadas obrigatórias devem ser vetorizadas antes de prosseguir:",
+        "requiredLayersValidationListItem": "• {displayName}",
+        "processingApi": "Processando API...",
+        "propertyAreaRequired": "Área do imóvel (ha) é obrigatória."
+      }
+    },
+    "layers": {
+      "invalidPolygon": "A camada que está sendo aplicada não é um polígono válido. Por favor, verifique e tente novamente.",
+      "invalidType": "A camada que está sendo aplicada apresenta uma geometria incompatível com a esperada. Por favor, verifique e tente novamente.",
+      "layerRemoval": "Uma ou mais camadas ({layers}) apresentaram erros e foram removidas do mapa após ser processadas. Por favor, verifique e tente novamente.",
+      "base": {
+        "esriImagery": { "name": "Esri Imagery" },
+        "openStreetMap": { "name": "OpenStreetMap" }
+      },
+      "custom": {
+        "territorialDivision": { "name": "Divisão Territorial" },
+        "brazil": { "name": "Brasil" },
+        "state": { "name": "Estado" },
+        "municipality": { "name": "Município" },
+        "declaredRuralProperties": { "name": "Imóveis Rurais Declarados" },
+        "ruralProperties": { "name": "Imóveis Rurais" },
+        "ruralPropertiesAgrarian": { "name": "Imóveis Rurais de Assentamentos da Reforma Agrária" },
+        "traditionalTerritory": {
+          "name": "Território Tradicional de Povos e Comunidades Tradicionais"
+        },
+        "declaredLandCover": { "name": "Cobertura do Solo Declarada" },
+        "consolidatedArea": { "name": "Área Consolidada" },
+        "nativeVegetation": { "name": "Vegetação Nativa Remanescente" },
+        "fallowArea": { "name": "Área de Pousio" }
+      },
+      "vectorization": {
+        "propertyGroup": {
+          "groupName": "Imóvel",
+          "description": "Selecione uma camada para desenhar e processar áreas do imóvel."
+        },
+        "ruralProperty": {
+          "displayName": "Área do Imóvel Rural",
+          "description": "Vetorize a área do imóvel."
+        },
+        "propertyHeadquarter": {
+          "displayName": "Sede do Imóvel",
+          "description": "Marque a localização da sede da propriedade."
+        },
+        "landCoverGroup": {
+          "groupName": "Cobertura do Solo",
+          "description": "Selecione camadas de cobertura do solo para desenhar e processar."
+        },
+        "consolidatedAreaVec": {
+          "displayName": "Área Consolidada",
+          "description": "Vetorize a área consolidada do imóvel."
+        },
+        "nativeVegetationVec": {
+          "displayName": "Vegetação Nativa Remanescente",
+          "description": "Vetorize a vegetação nativa remanescente do imóvel."
+        },
+        "hydrographyGroup": {
+          "groupName": "Hidrografia",
+          "description": "Selecione camadas de hidrografia para desenhar e processar."
+        },
+        "river": {
+          "displayName": "Rio",
+          "description": "Vetorize a área do rio na propriedade.",
+          "tooltip": "Área de Proteção Permanentemente (Rio)"
+        },
+        "riverUpTo10m": {
+          "displayName": "Rio (até 10m)",
+          "description": "Vetorize a área do rio na propriedade.",
+          "tooltip": "Área de Proteção Permanentemente (Rio até 10m)"
+        },
+        "riverSpring": {
+          "displayName": "Nascente",
+          "description": "Vetorize a área da nascente na propriedade.",
+          "tooltip": "Área de Proteção Permanentemente (Nascente)"
+        },
+        "legalReserveGroup": {
+          "groupName": "Reserva Legal",
+          "description": "Selecione camadas de reserva legal para desenhar e processar."
+        },
+        "legalReserve": {
+          "displayName": "Reserva Legal",
+          "description": "Vetorize a área de reserva legal na propriedade."
+        }
+      }
+    },
+    "leafletDraw": {
+      "draw": {
+        "toolbar": {
+          "actions": { "title": "Cancelar desenho", "text": "Cancelar" },
+          "finish": { "title": "Finalizar desenho", "text": "Finalizar" },
+          "undo": { "title": "Apagar último ponto", "text": "Apagar último ponto" },
+          "buttons": {
+            "polyline": "Desenhar uma polilinha",
+            "polygon": "Desenhar um polígono",
+            "rectangle": "Desenhar um retângulo",
+            "circle": "Desenhar um círculo",
+            "marker": "Desenhar um marcador",
+            "circlemarker": "Desenhar um marcador circular"
+          }
+        },
+        "handlers": {
+          "circle": {
+            "tooltip": { "start": "Clique e arraste para desenhar o círculo." },
+            "radius": "Raio"
+          },
+          "circlemarker": {
+            "tooltip": { "start": "Clique no mapa para posicionar o marcador circular." }
+          },
+          "marker": { "tooltip": { "start": "Clique no mapa para posicionar o marcador." } },
+          "polygon": {
+            "tooltip": {
+              "start": "Clique para iniciar o desenho da forma.",
+              "cont": "Clique para continuar desenhando a forma.",
+              "end": "Clique no primeiro ponto para fechar esta forma."
+            }
+          },
+          "polyline": {
+            "error": "<strong>Erro:</strong> as bordas da forma não podem se cruzar!",
+            "tooltip": {
+              "start": "Clique para iniciar o desenho da linha.",
+              "cont": "Clique para continuar o desenho da linha.",
+              "end": "Clique no último ponto para finalizar a linha."
+            }
+          },
+          "rectangle": { "tooltip": { "start": "Clique e arraste para desenhar o retângulo." } },
+          "simpleshape": { "tooltip": { "end": "Solte o mouse para finalizar o desenho." } }
+        }
+      },
+      "edit": {
+        "toolbar": {
+          "actions": {
+            "save": { "title": "Salvar alterações.", "text": "Salvar" },
+            "cancel": {
+              "title": "Cancelar edição, descarta todas as alterações.",
+              "text": "Cancelar"
+            },
+            "clearAll": { "title": "Limpar todas as camadas.", "text": "Limpar Tudo" }
+          },
+          "buttons": {
+            "edit": "Editar camadas.",
+            "editDisabled": "Nenhuma camada para editar.",
+            "remove": "Apagar camadas.",
+            "removeDisabled": "Nenhuma camada para apagar."
+          }
+        },
+        "handlers": {
+          "edit": {
+            "tooltip": {
+              "text": "Arraste os manipuladores ou marcadores para editar as feições.",
+              "subtext": "Clique em cancelar para desfazer as alterações."
+            }
+          },
+          "remove": { "tooltip": { "text": "Clique em uma feição para remover." } }
+        }
+      }
+    },
+    "descriptiveMemorial": {
+      "title": "Coordenadas",
+      "addPoint": "Adicionar Ponto",
+      "editPoint": "Editar Ponto",
+      "removePoint": "Remover Ponto",
+      "actions": "Ações",
+      "clearGeometries": "Limpar Geometrias",
+      "index": "Índice",
+      "x": "X",
+      "y": "Y",
+      "azimuth": "Azimute",
+      "distance": "Distância",
+      "noPoints": "Nenhum ponto adicionado",
+      "addPointTitle": "Adicionar Ponto",
+      "editPointTitle": "Editar Ponto",
+      "removePointTitle": "Remover Ponto",
+      "clearGeometriesTitle": "Limpar Geometrias",
+      "addPointDescription": "Adicionar um novo ponto à lista",
+      "editPointDescription": "Editar o ponto selecionado",
+      "removePointDescription": "Remover o ponto selecionado",
+      "clearGeometriesDescription": "Limpar todas as geometrias do mapa",
+      "memorialDescriptive": "Memorial Descritivo",
+      "referenceSystem": "Sistema de Referência",
+      "selectSystem": "Selecione o sistema",
+      "sirgas2000": "SIRGAS 2000",
+      "coordinateFormat": "Formato de Coordenadas",
+      "selectFormat": "Selecione o formato",
+      "decimalDegrees": "Graus Decimais (DD)",
+      "degreesMinutesSeconds": "Graus, Minutos, Segundos (DMS)",
+      "manualInput": "Preenchimento Manual",
+      "insertCoordinates": "Inserir Coordenadas",
+      "xLongitude": "X (Longitude)",
+      "yLatitude": "Y (Latitude)",
+      "degrees": "Graus",
+      "minutes": "Minutos",
+      "seconds": "Segundos",
+      "addedPoints": "Pontos Adicionados",
+      "finalizeGeometry": "Finalizar Geometria",
+      "csvUpload": "Upload CSV",
+      "csvFileUpload": "Upload de Arquivo CSV",
+      "dragCsvFile": "Arraste o arquivo CSV ou clique para fazer upload",
+      "csvColumnsInfo": "O arquivo deve conter as colunas: X, Y, AZIMUTH, DISTANCIA",
+      "applyCsvCoordinates": "Aplicar Coordenadas do CSV",
+      "placeholderLongitude": "Ex: -46.6333",
+      "placeholderLatitude": "Ex: -23.5505",
+      "placeholderAzimuth": "Ex: 90",
+      "placeholderDistance": "Ex: 100",
+      "placeholderDegrees": "Graus",
+      "placeholderMinutes": "Minutos",
+      "placeholderSeconds": "Segundos",
+      "errorXYRequired": "X e Y são obrigatórios no primeiro ponto",
+      "errorDegreesRequired": "Graus são obrigatórios no primeiro ponto",
+      "errorFirstRowXY": "A primeira linha do CSV deve conter as coordenadas X e Y",
+      "errorProvideCoordinatesOrAzimuthDistance": "Forneça coordenadas ou Azimuth e Distância"
+    }
+  },
+  "es-es": {
+    "common": {
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "homepage": {
+      "demoBannerTitle": "Información.",
+      "demoBanner": " Este entorno es de demostración. Los datos se eliminan diariamente y no deben considerarse permanentes.",
+      "title": "Elige la opción según lo que quieras hacer.",
+      "registerProperty": "Registrar propiedad",
+      "properties": "Propiedades",
+      "profile": "Perfil",
+      "learnMore": "Aprende más sobre el proyecto",
+      "avatar": { "title": "Mi cuenta", "profile": "Perfil", "logout": "Cerrar sesión" }
+    },
+    "wms": {
+      "territorialDivision": "División Territorial",
+      "territorialDivision_layers": {
+        "brazil": "Brasil",
+        "state": "Estado",
+        "municipality": "Municipio"
+      },
+      "declaredRuralProperties": "Propiedades Rurales Declaradas",
+      "declaredRuralProperties_layers": {
+        "ruralProperties": "Propiedades Rurales",
+        "ruralPropertiesAgrarian": "Propiedades Rurales de Asentamientos de Reforma Agraria",
+        "traditionalTerritory": "Territorio Tradicional de Pueblos y Comunidades Tradicionales"
+      },
+      "declaredLandCover": "Cobertura del Suelo Declarada",
+      "declaredLandCover_layers": {
+        "consolidatedArea": "Área Consolidada",
+        "nativeVegetation": "Vegetación Nativa Remanente",
+        "fallowArea": "Área en Barbecho"
+      }
+    },
+    "register": {
+      "step": "Paso",
+      "steps": {
+        "propertyMap": "Mapa de la propiedad",
+        "registrarDetails": "Detalles del registrador",
+        "landholdersInformation": "Información del propietario",
+        "ruralProperties": "Propiedades rurales",
+        "propertyRights": "Derechos de propiedad"
+      },
+      "propertyMap": {
+        "card": "Registrar Propiedad",
+        "cardSubtitle": "Vectorización de información relacionada con áreas."
+      },
+      "registrarDetails": {
+        "card": "DETALLES DEL REGISTRADOR",
+        "cardSubtitle": "Complete la información de la persona responsable de realizar el registro (propietario, asistente técnico, funcionario público, otros).",
+        "data": "Datos",
+        "representativeData": "Datos del representante",
+        "representativeDataSubtitle": "Representante: En el Registro Ambiental Rural (RAR), el representante es una persona autorizada por el propietario o poseedor para actuar en su nombre en todas as etapas del proceso de registro.",
+        "form": {
+          "id": "ID Personal",
+          "dateOfBirth": "Fecha de nacimiento",
+          "name": "Nombre",
+          "mothersName": "Nombre de la madre",
+          "options": {
+            "one": "No tengo representante",
+            "two": "Tengo un representante y él/ella es el registrador(a)",
+            "three": "Tengo un representante y él/ella no es el registrador(a)"
+          },
+          "required": "(Obligatorio)"
+        },
+        "registrarMustBeDifferentFromRepresentative": "El declarante debe ser diferente del Representante"
+      },
+      "landholdersInformation": {
+        "card": "INFORMACIÓN DEL PROPIETARIO",
+        "cardSubtitle": "Complete la información sobre el propietario o poseedor de la tierra. Esta persona es legalmente responsable de la tierra que se está registrando.",
+        "form": {
+          "id": "ID Personal",
+          "landholderLegalPersonality": {
+            "label": "Personalidad jurídica del propietario",
+            "options": { "one": "Persona física", "two": "Persona jurídica" }
+          },
+          "chooseLandholderInfoMethod": {
+            "label": "Elija una forma de agregar la información del propietario",
+            "tooltip": "Seleccione cómo desea proporcionar los detalles del propietario: ingresando los datos manualmente o importándolos desde un archivo.",
+            "options": { "one": "Rellenar datos", "two": "Importar archivos de datos" }
+          },
+          "dateOfBirth": "Fecha de nacimiento",
+          "name": "Nombre",
+          "mothersName": "Nombre de la madre",
+          "optional": "(Opcional)"
+        },
+        "table": {
+          "header": {
+            "legalPersonality": "Personalidad jurídica",
+            "taxpayer": "ID Fiscal",
+            "nameCompany": "Nombre",
+            "actions": "Acciones"
+          },
+          "naturalPerson": "Persona Natural",
+          "legalEntity": "Entidad Legal",
+          "emptyData": "No hay datos para mostrar."
+        },
+        "addNewLandholder": "Agregar Nuevo Propietario",
+        "editingLandholder": "Editando Propietario",
+        "clear": "Limpiar",
+        "saveChanges": "Guardar cambios",
+        "cancel": "Cancelar",
+        "addOwnerHolder": "Agregar propietario/poseedor",
+        "ListOfOwnersHolders": "Lista de Propietarios/Poseedores",
+        "warningModal": "Agregue al menos un propietario.",
+        "warningModalTitle": "Atención",
+        "warningModalRequired": "Todos los campos deben ser completados antes de guardar.",
+        "warningModalDelete": "¿Está seguro de que desea eliminar al propietario/poseedor?"
+      },
+      "ruralProperty": {
+        "card": "PROPIEDAD RURAL",
+        "cardSubtitle": "Complete la información de la propiedad rural.",
+        "form": {
+          "propertyName": "Nombre de la Propiedad",
+          "state": "Estado",
+          "statePlaceHolder": "Seleccione el estado",
+          "city": "Ciudad",
+          "cityPlaceHolder": "Seleccione la ciudad",
+          "zipCode": "Código Postal",
+          "locationZonev": "Zona de Ubicación (Opcional)",
+          "locationZonevOption": { "urban": "Urbana", "rural": "Rural" },
+          "descriptionOfPropertyAcess": "Descripción del Acceso a la Propiedad (Opcional)",
+          "descriptionOfPropertyAcessTooltip": "Proporcione detalles sobre cómo acceder a la propiedad, como carreteras, puntos de referencia o direcciones específicas. Este campo es opcional."
+        },
+        "cardMailingAddress": "Dirección de Correspondencia",
+        "formMailingAddress": {
+          "recipientName": "Nombre del Destinatario",
+          "addressStreet": "Dirección/Calle",
+          "addressStreetTooltip": "Ingrese la dirección oficial o el nombre de la calle donde se encuentra la propiedad.",
+          "number": "Número",
+          "additionalInformation": "Información Adicional (Opcional)",
+          "neighborhood": "Barrio",
+          "zipCode": "Código Postal",
+          "state": "Estado",
+          "statePlaceHolder": "Seleccione el estado",
+          "city": "Ciudad",
+          "cityPlaceHolder": "Seleccione la ciudad",
+          "email": "Correo Electrónico (Opcional)",
+          "contactNumber": "Número de Contacto (Opcional)"
+        }
+      },
+      "propertyRights": {
+        "card": "DETALLES DEL PROPIETARIO Y DOCUMENTACIÓN.",
+        "cardSubtitle": "Proporcione información de la documentación de la propiedad o posesión.",
+        "confirm": "¿Está seguro de que desea enviar el registro?",
+        "sucess": "Datos registrados con éxito. El recibo se generará automáticamente.",
+        "form": {
+          "addNewProperty": "Agregar Nueva Propiedad",
+          "editingProperty": "Editando Propiedad",
+          "propertyOrLandholding": "Propiedad o Posesión",
+          "propertyOrLandholdingOption": { "property": "Propiedad", "landholding": "Posesión" },
+          "registeredPropertyName": "Nombre de la Propiedad Registrada",
+          "area": "Área",
+          "documentType": "Tipo de Documento",
+          "documentTypePlaceHolder": "Seleccione el tipo de documento",
+          "documentTypeOptions": {
+            "deed": "Escritura",
+            "titledeed": "Título de Propiedad",
+            "purchaseandsaleagreement": "Contrato de Compra y Venta"
+          },
+          "titleDeedOrLandDocument": "Título de Propiedad/Documento de Posesión",
+          "titleDeedOrLandDocumentTooltip": "Documento legal oficial que comprueba la propiedad de una propiedad o posesión. Asegúrese de que esté debidamente registrado y actualizado.",
+          "documentDate": "Fecha del Documento",
+          "book": "Libro",
+          "page": "Página",
+          "stateOfTheNotaryOffice": "Estado de la Notaría",
+          "stateOfTheNotaryOfficePlaceHolder": "Seleccione el estado",
+          "cityOfTheNotaryOffice": "Ciudad de la Notaría",
+          "cityOfTheNotaryOfficePlaceHolder": "Seleccione la ciudad",
+          "nationalRuralLandRegistrySystemCode": "Código del Sistema Nacional de Registro de Tierras Rurales",
+          "nationalRuralLandRegistrySystemCodeTooltip": "Identificador único asignado a las propiedades rurales en el Sistema Nacional de Registro de Tierras Rurales.",
+          "propertyCertification": "Certificación de la Propiedad",
+          "propertyCertificationTooltip": "Certificación que verifica el estado legal y el cumplimiento de la propiedad según las regulaciones nacionales.",
+          "nationalRuralPropertyRegistrationNumber": "Número de Registro Nacional de la Propiedad Rural",
+          "nationalRuralPropertyRegistrationNumberTooltip": "Número oficial de registro de la propiedad rural, utilizado para fines legales y administrativos.",
+          "legalReserve": {
+            "label": "¿Tiene Reserva Legal registrada y/o Reserva Legal aprobada pero no registrada?",
+            "legalReserveOptions": { "yes": "Sí", "no": "No" }
+          },
+          "legalReserve2": "No tiene Reserva Legal registrada y/o Reserva Legal aprobada pero no registrada.",
+          "clear": "Limpiar",
+          "add": "Agregar",
+          "cancel": "Cancelar",
+          "saveChanges": "Guardar Cambios",
+          "required": "(Obligatorio)"
+        },
+        "listOfInformedLandDocuments": "Lista de documentos de posesión informados",
+        "list": {
+          "type": {
+            "title": "Tipo",
+            "property": "Propiedad",
+            "landholding": "Posesión"
+          },
+          "titleDeedOrLandDocument": "Título de Propiedad/Documento de Posesión",
+          "propertyName": "Nombre de la Propiedad",
+          "stateAndCityOfTheNotaryOffice": "Estado y Ciudad de la Notaría",
+          "actions": "Acciones",
+          "noDataToShow": "No hay datos para mostrar."
+        },
+        "confirmModal": "¿Está seguro de que desea enviar el registro?",
+        "confirmModalOverAreaLimitWarning": "La superficie del inmueble indicada en los documentos difiere de la superficie calculada en el mapa.",
+        "confirmModalOverAreaLimitMap": "Área en el mapa: ",
+        "confirmModalOverAreaLimitDocs": "Área en documentos: ",
+        "confirmModalOverAreaLimitRule": "Por regla general, la diferencia no debe exceder: ",
+        "confirmModalOverAreaLimitQuestion": "¿Desea continuar con el registro?",
+        "deletePropertyInformationModal": "¿Está seguro de que desea eliminar los documentos de la propiedad ingresados?",
+        "hasBlankFields": "Debe completar todos los campos antes de guardar.",
+        "savingData": "Guardando datos de la propiedad.",
+        "successModal": "Datos registrados correctamente",
+        "invalidForm": "Por favor, agregue al menos un documento de propiedad",
+        "requestError": "Está a punto de enviar un formulario con datos no válidos. Por favor, revise los campos y vuelva a intentarlo.",
+        "previousStepsBlankFields": "Hay campos obligatorios en pasos anteriores que deben completarse",
+        "noMapData": "No se encontraron datos del mapa. Regrese al paso del mapa de la propiedad para vectorizar las áreas obligatorias.",
+        "successModalTitle": "Éxito",
+        "attentionModalTitle": "Atención",
+        "modalOverAreaLimitTitle": "Diferencia de área excedida",
+        "savingDataModalTitle": "Espere",
+        "areaDifferenceExceeded": "Por favor, revise los datos ingresados e inténtelo de nuevo.",
+        "serverError": "Error inesperado del servidor. Inténtelo de nuevo.",
+        "connectionError": "Error de conexión o servidor no disponible. Verifique su conexión e inténtelo de nuevo.",
+        "validationError": {
+          "header": "Hay campos obligatorios que deben completarse antes del envío:",
+          "step": "Paso",
+          "fields": "Campos obligatorios",
+          "instruction": "Por favor, regrese a los pasos anteriores y complete todos los campos obligatorios antes de continuar."
+        }
+      },
+      "errors": {
+        "isRequired": "es obligatorio",
+        "dateUpperLimit": "debe ser menor o igual a la fecha de hoy",
+        "dateFormat": "debe tener el formato AAAA-MM-DD",
+        "checkValue": "Verifica el valor"
+      },
+      "closeButton": "Cerrar",
+      "confirmButton": "OK",
+      "nextButton": "Siguiente",
+      "previousButton": "Anterior",
+      "saveButton": "Salvar",
+      "register": "Registrar",
+      "route": "Registrar propiedad",
+      "route-editing": "Editar propiedad",
+      "route-editing-cancel-button": "Cancelar la edición"
+    },
+    "properties": {
+      "propertyCard": {
+        "code": "Código",
+        "state": "Estado",
+        "city": "Ciudad",
+        "details": "Detalles",
+        "registration": "Registro"
+      },
+      "filter": {
+        "filter": "Filtro",
+        "location": "Ubicación",
+        "stateDistrict": "Estado",
+        "selectState": "Seleccionar Estado",
+        "municipality": "Ciudad",
+        "selectCity": "Seleccionar Ciudad",
+        "details": "Detalles",
+        "propertyName": "Nombre de la Propiedad",
+        "code": "Número de Registro de la Propiedad",
+        "add": "Agregar",
+        "landholder": "Propietario",
+        "ownersName": "Nombre del Propietario",
+        "ownersIdentifier": "Identificador del Propietario",
+        "propertyNumbers": "Números de Propiedad",
+        "landholderId": "ID del Propietario",
+        "clean": "Limpiar",
+        "apply": "Aplicar"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente"
+      },
+      "route": "Propiedades",
+      "propertyInfo": "Solo se mostrarán las propiedades en las que usted sea propietario(a) o representante.",
+      "propertyCardTitle": "REGISTRAR MÁS PROPIEDADES",
+      "registerProperty": "Registrar Propiedad"
+    },
+    "details": {
+      "property": "PROPIEDAD",
+      "propertyName": "Nombre de la Propiedad",
+      "code": "Código",
+      "state": "Estado",
+      "city": "Ciudad",
+      "zipCode": "Código Postal",
+      "locationZone": "Zona de Ubicación",
+      "descriptionOfPropertyAccess": "Descripción del Acceso a la Propiedad",
+      "editRegistry": "Editar",
+      "downloadReceipt": "Descargar Comprobante",
+      "registeredAreas": "ÁREAS REGISTRADAS",
+      "owner": "PROPIETARIO",
+      "name": "Nombre",
+      "id": "ID",
+      "dateOfBirth": "Fecha de Nacimiento",
+      "ownerOrHolder": "Propietario o Poseedor",
+      "mothersName": "Nombre de la Madre",
+      "registrars": "REGISTRADORES",
+      "titleDeedOrLandDocument": "Escritura / Documento de Terreno",
+      "documentType": "Tipo de Documento",
+      "registeredPropertyName": "Nombre de la Propiedad Registrada",
+      "documentArea": "Área del Documento",
+      "cityStateOfNotaryOffice": "Ciudad/Estado de la Notaría",
+      "route": "Detalles de la Propiedad"
+    },
+    "footer": "CAR - Catastro Ambiental Rural.",
+    "mapComponents": {
+      "areasDisplayPanel": {
+        "title": "Panel de Áreas Vectorizadas",
+        "hideLayer": "Ocultar capa",
+        "showLayer": "Mostrar capa",
+        "layerColorTitle": "Color de la capa",
+        "editLayer": "Editar capa",
+        "removeLayer": "Eliminar capa",
+        "notApplicable": "N/A",
+        "apiMessagesTitle": "Mensajes de la API:",
+        "sourceIdPrefix": "ID de Fuente:"
+      },
+      "vectorizationToolPanel": {
+        "limitReached": "Límite alcanzado ({current}/{max}) - {layerName}",
+        "limitReachedShort": "Máximo: {max}",
+        "title": "Seleccionar Capa para Vectorizar",
+        "noLayerGroupsConfigured": "No hay grupos de capas configurados.",
+        "selectLayerFromGroup": "Por favor, seleccione una capa del grupo de arriba.",
+        "clickGroupToSeeLayers": "Haga clic en un grupo para ver las capas disponibles.",
+        "noLayersInGroup": "No hay capas disponibles en este grupo.",
+        "layerInfoDefault": "No hay información adicional para {layerName}.",
+        "layerInfoTitle": "Información: {layerName}",
+        "selectedLayer": "Capa Seleccionada",
+        "geometryTypeForDrawing": "Tipo de geometría para dibujar",
+        "fixedParameters": {
+          "title": "Parámetros Fijos",
+          "keys": {
+            "buffer_size": "Tamaño del Búfer",
+            "options": "Opciones"
+          }
+        },
+        "requiredLayerIndicator": "Capa obligatoria"
+      },
+      "propertyMapView": {
+        "processing": "Procesando...",
+        "areaNotAvailable": "Área no disponible",
+        "loaded": "Cargado",
+        "apiError": "Error en la API",
+        "maxInstancesAlert": "La capa \"{displayName}\" solo se puede dibujar {maxInstances} vez(veces).",
+        "requiredLayersValidationTitle": "Validación de Capas Obligatorias",
+        "requiredLayersValidationMessage": "Las siguientes capas obligatorias deben ser vectorizadas antes de continuar:",
+        "requiredLayersValidationListItem": "• {displayName}",
+        "processingApi": "Procesando API...",
+        "propertyAreaRequired": "El área de la propiedad (ha) es obligatoria."
+      }
+    },
+    "layers": {
+      "invalidPolygon": "La capa que se está aplicando no es un polígono válido. Por favor, verifique e intente de nuevo.",
+      "invalidType": "La capa que se está aplicando tiene una geometría incompatible con la esperada. Por favor, verifique e intente de nuevo.",
+      "layerRemoval": "Una o más capas ({layers}) presentaron errores y fueron eliminadas del mapa después de ser procesadas. Por favor verifique e intente de nuevo.",
+      "base": {
+        "esriImagery": { "name": "Esri Imagery" },
+        "openStreetMap": { "name": "OpenStreetMap" }
+      },
+      "custom": {
+        "territorialDivision": { "name": "División Territorial" },
+        "brazil": { "name": "Brasil" },
+        "state": { "name": "Estado" },
+        "municipality": { "name": "Municipio" },
+        "declaredRuralProperties": { "name": "Propiedades Rurales Declaradas" },
+        "ruralProperties": { "name": "Propiedades Rurales" },
+        "ruralPropertiesAgrarian": {
+          "name": "Propiedades Rurales de Asentamientos de Reforma Agraria"
+        },
+        "traditionalTerritory": {
+          "name": "Territorio Tradicional de Pueblos y Comunidades Tradicionales"
+        },
+        "declaredLandCover": { "name": "Cobertura del Suelo Declarada" },
+        "consolidatedArea": { "name": "Área Consolidada" },
+        "nativeVegetation": { "name": "Vegetación Nativa Remanente" },
+        "fallowArea": { "name": "Área en Barbecho" }
+      },
+      "vectorization": {
+        "propertyGroup": {
+          "groupName": "Propiedad",
+          "description": "Seleccione una capa para dibujar y procesar áreas de la propiedad."
+        },
+        "ruralProperty": {
+          "displayName": "Área de Propiedad Rural",
+          "description": "Vectorizar el área de la propiedad."
+        },
+        "propertyHeadquarter": {
+          "displayName": "Sede de la Propiedad",
+          "description": "Marcar la ubicación de la sede de la propiedad."
+        },
+        "landCoverGroup": {
+          "groupName": "Cobertura del Suelo",
+          "description": "Seleccione capas de cobertura del suelo para dibujar y procesar."
+        },
+        "consolidatedAreaVec": {
+          "displayName": "Área Consolidada",
+          "description": "Vectorizar el área consolidada de la propiedad."
+        },
+        "nativeVegetationVec": {
+          "displayName": "Vegetación Nativa Remanente",
+          "description": "Vectorizar la vegetación nativa remanente de la propiedad."
+        },
+        "hydrographyGroup": {
+          "groupName": "Hidrografía",
+          "description": "Seleccione capas de hidrografía para dibujar y procesar."
+        },
+        "river": {
+          "displayName": "Río",
+          "description": "Vectorizar el área del río en la propiedad.",
+          "tooltip": "Área de Protección Permanentemente (Río)"
+        },
+        "riverUpTo10m": {
+          "displayName": "Río (hasta 10m)",
+          "description": "Vectorizar el área del río en la propiedad.",
+          "tooltip": "Área de Protección Permanentemente (Río hasta 10m)"
+        },
+        "riverSpring": {
+          "displayName": "Nascente",
+          "description": "Vectorizar el área de la nascente en la propiedad.",
+          "tooltip": "Área de Protección Permanentemente (Nascente)"
+        },
+        "legalReserveGroup": {
+          "groupName": "Reserva Legal",
+          "description": "Seleccione capas de reserva legal para dibujar y procesar."
+        },
+        "legalReserve": {
+          "displayName": "Reserva Legal",
+          "description": "Vectorizar el área de reserva legal de la propiedad."
+        }
+      }
+    },
+    "leafletDraw": {
+      "draw": {
+        "toolbar": {
+          "actions": { "title": "Cancelar dibujo", "text": "Cancelar" },
+          "finish": { "title": "Finalizar dibujo", "text": "Finalizar" },
+          "undo": { "title": "Eliminar último punto dibujado", "text": "Eliminar último punto" },
+          "buttons": {
+            "polyline": "Dibujar una polilínea",
+            "polygon": "Dibujar un polígono",
+            "rectangle": "Dibujar un rectángulo",
+            "circle": "Dibujar un círculo",
+            "marker": "Dibujar un marcador",
+            "circlemarker": "Dibujar un marcador circular"
+          }
+        },
+        "handlers": {
+          "circle": {
+            "tooltip": { "start": "Haga clic y arrastre para dibujar el círculo." },
+            "radius": "Radio"
+          },
+          "circlemarker": {
+            "tooltip": { "start": "Haga clic en el mapa para colocar el marcador circular." }
+          },
+          "marker": { "tooltip": { "start": "Haga clic en el mapa para colocar el marcador." } },
+          "polygon": {
+            "tooltip": {
+              "start": "Haga clic para comenzar a dibujar la forma.",
+              "cont": "Haga clic para continuar dibujando la forma.",
+              "end": "Haga clic en el primer punto para cerrar esta forma."
+            }
+          },
+          "polyline": {
+            "error": "<strong>Error:</strong> ¡los bordes de la forma no pueden cruzarse!",
+            "tooltip": {
+              "start": "Haga clic para comenzar a dibujar la línea.",
+              "cont": "Haga clic para continuar dibujando la línea.",
+              "end": "Haga clic en el último punto para finalizar la línea."
+            }
+          },
+          "rectangle": {
+            "tooltip": { "start": "Haga clic y arrastre para dibujar el rectángulo." }
+          },
+          "simpleshape": { "tooltip": { "end": "Suelte el mouse para finalizar el dibujo." } }
+        }
+      },
+      "edit": {
+        "toolbar": {
+          "actions": {
+            "save": { "title": "Guardar cambios.", "text": "Guardar" },
+            "cancel": {
+              "title": "Cancelar edición, descarta todos los cambios.",
+              "text": "Cancelar"
+            },
+            "clearAll": { "title": "Limpiar todas las capas.", "text": "Limpar Todo" }
+          },
+          "buttons": {
+            "edit": "Editar capas.",
+            "editDisabled": "No hay capas para editar.",
+            "remove": "Eliminar capas.",
+            "removeDisabled": "No hay capas para eliminar."
+          }
+        },
+        "handlers": {
+          "edit": {
+            "tooltip": {
+              "text": "Arrastre las manijas o marcadores para editar las características.",
+              "subtext": "Haga clic en cancelar para deshacer los cambios."
+            }
+          },
+          "remove": { "tooltip": { "text": "Haga clic en una característica para eliminar." } }
+        }
+      }
+    },
+    "descriptiveMemorial": {
+      "title": "Coordenadas",
+      "addPoint": "Agregar Punto",
+      "editPoint": "Editar Punto",
+      "removePoint": "Eliminar Punto",
+      "actions": "Acciones",
+      "clearGeometries": "Limpiar Geometrías",
+      "index": "Índice",
+      "x": "X",
+      "y": "Y",
+      "azimuth": "Azimut",
+      "distance": "Distancia",
+      "noPoints": "No hay puntos añadidos",
+      "addPointTitle": "Agregar Punto",
+      "editPointTitle": "Editar Punto",
+      "removePointTitle": "Eliminar Punto",
+      "clearGeometriesTitle": "Limpiar Geometrías",
+      "addPointDescription": "Agregar un nuevo punto a la lista",
+      "editPointDescription": "Editar el punto seleccionado",
+      "removePointDescription": "Eliminar el punto seleccionado",
+      "clearGeometriesDescription": "Limpiar todas las geometrías del mapa",
+      "memorialDescriptive": "Memorial Descriptivo",
+      "referenceSystem": "Sistema de Referencia",
+      "selectSystem": "Seleccionar sistema",
+      "sirgas2000": "SIRGAS 2000",
+      "coordinateFormat": "Formato de Coordenadas",
+      "selectFormat": "Seleccionar formato",
+      "decimalDegrees": "Grados Decimales (DD)",
+      "degreesMinutesSeconds": "Grados, Minutos, Segundos (DMS)",
+      "manualInput": "Entrada Manual",
+      "insertCoordinates": "Insertar Coordenadas",
+      "xLongitude": "X (Longitud)",
+      "yLatitude": "Y (Latitud)",
+      "degrees": "Grados",
+      "minutes": "Minutos",
+      "seconds": "Segundos",
+      "addedPoints": "Puntos Agregados",
+      "finalizeGeometry": "Finalizar Geometría",
+      "csvUpload": "Cargar CSV",
+      "csvFileUpload": "Carga de Archivo CSV",
+      "dragCsvFile": "Arrastre el archivo CSV o haga clic para cargar",
+      "csvColumnsInfo": "El archivo debe contener las columnas: X, Y, AZIMUT, DISTANCIA",
+      "applyCsvCoordinates": "Aplicar Coordenadas CSV",
+      "placeholderLongitude": "Ej: -46.6333",
+      "placeholderLatitude": "Ej: -23.5505",
+      "placeholderAzimuth": "Ej: 90",
+      "placeholderDistance": "Ej: 100",
+      "placeholderDegrees": "Grados",
+      "placeholderMinutes": "Minutos",
+      "placeholderSeconds": "Segundos",
+      "errorXYRequired": "X e Y son obligatorios en el primer punto",
+      "errorDegreesRequired": "Los grados son obligatorios en el primer punto",
+      "errorFirstRowXY": "La primera fila del CSV debe contener las coordenadas X e Y",
+      "errorProvideCoordinatesOrAzimuthDistance": "Proporcione coordenadas o Azimut y Distancia"
+    }
+  }
+}
