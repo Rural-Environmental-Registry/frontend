@@ -58,7 +58,7 @@ export default {
 
     setTimeout(() => {
       if (!mapContainer.hasAttribute('tabindex')) mapContainer.setAttribute('tabindex', '-1')
-      ;(mapContainer as HTMLElement).focus()
+        ; (mapContainer as HTMLElement).focus()
     }, 450)
   },
   takeScreenshot: async (): Promise<void> => {
@@ -132,10 +132,20 @@ const formatToPayload = (vectorizedLayers: any): any => {
   const propertyData = vectorizedLayers[mainPropertyKey]
   formattedData.mainArea['geometry'] = propertyData?.vectorizedArea?.geoJson?.geometry
   formattedData.mainArea['area'] = propertyData?.vectorizedArea?.info?.ha?.value
-  formattedData.mainArea['lat'] =
-    propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][0]
-  formattedData.mainArea['lon'] =
-    propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][1]
+
+  const geometryTypes = {
+    "Polygon": {
+      "lat": propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][0],
+      "lon": propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][1]
+    },
+    "MultiPolygon": {
+      "lat": propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][0][0],
+      "lon": propertyData?.vectorizedArea?.geoJson?.geometry?.coordinates[0][0][0][1]
+    }
+  }
+  const mainGeometryType = propertyData?.vectorizedArea?.geoJson?.geometry?.type
+  formattedData.mainArea['lat'] = geometryTypes[mainGeometryType]["lat"] || 0
+  formattedData.mainArea['lon'] = geometryTypes[mainGeometryType]["lon"] || 0
 
   for (const key in vectorizedLayers) {
     if (key === mainPropertyKey) continue

@@ -35,12 +35,7 @@ const showBanner = ref(true)
     <div class="flex-grow max-w-7xl mx-auto w-full flex flex-col justify-center">
       <div class="grid grid-cols-1 md:grid-cols-[30%_70%] items-center gap-8 w-full mt-10">
         <div class="hidden md:flex justify-center">
-          <img
-            src="/images/lina11.png"
-            width="500"
-            height="500"
-            alt="image of Persona Lina sitting on a chair"
-          />
+          <img src="/images/Logo-RER.png" width="500" height="500" alt="image of Logo RER" />
         </div>
 
         <div class="flex flex-col justify-center w-full">

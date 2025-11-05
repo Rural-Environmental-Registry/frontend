@@ -1,43 +1,69 @@
 # ============================
-# 1) Build Stage
+# 1) Dependencies Stage
 # ============================
-FROM node:18-alpine AS builder
+FROM node:18-alpine AS dependencies
 
-RUN apk add --no-cache git 
-RUN apk add --no-cache jq
+# Atualizar pacotes para corrigir CVEs e instalar necessários
+RUN apk update && apk upgrade --no-cache && \
+    apk add --no-cache \
+    git \
+    jq
 
 WORKDIR /app
 
-# Copy the project files into the container
+# Copiar apenas arquivos de dependências primeiro
 COPY package.json package-lock.json ./
+COPY scripts/map-dependency.cjs ./scripts/
 
 ARG GITLAB_TOKEN
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
+ARG NO_PROXY
 
-RUN git config --global http.proxy "$HTTP_PROXY" && \
-  git config --global https.proxy "$HTTPS_PROXY"
-RUN git config --global url."https://gitlab-ci-token:${GITLAB_TOKEN}@inovacao.dataprev.gov.br".insteadOf "https://inovacao.dataprev.gov.br"
+# Configurar proxy e git antes de instalar dependências
+RUN git config --global http.proxy "" && \
+    git config --global https.proxy "" && \
+    git config --global no.proxy "" && \
+    git config --global url."https://gitlab-ci-token:Rf6Lm95AxDznCdQAa6cm@inovacao.dataprev.gov.br".insteadOf "https://inovacao.dataprev.gov.br"
 
-RUN npm install
+# Instalar dependências com cache otimizado
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --ignore-scripts
 
+# ============================
+# 2) Process Dependencies Stage
+# ============================
+FROM dependencies AS deps-processed
+COPY ./Map-Component /app/Map-Component
+RUN node scripts/map-dependency.cjs
+
+# ============================
+# 3) Build Stage
+# ============================
+FROM deps-processed AS build
 COPY . .
-
 ARG APP_VERSION
-ENV APP_VERSION=${APP_VERSION}
-
+ENV APP_VERSION=0.0.0
 RUN npm run build-only
-
-RUN echo "$APP_VERSION" > dist/version.txt
-
+RUN echo "0.0.0" > dist/version.txt
 RUN sh scripts/generate-config.sh
 
 # ============================
-# 2) Run Stage
+# 4) Runtime Stage
 # ============================
-FROM nginx:latest
+FROM nginx:alpine
 
-COPY --from=builder /app/dist/ /usr/share/nginx/html/rechml
+COPY --from=build /app/dist/ /usr/share/nginx/html/rectest
+RUN rm -f /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
+# Criar diretórios de cache e ajustar permissões
+RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp \
+    /var/cache/nginx/fastcgi_temp /var/cache/nginx/uwsgi_temp /var/cache/nginx/scgi_temp && \
+    chown -R nginx:nginx /var/cache/nginx && \
+    chmod -R 755 /var/cache/nginx && \
+    touch /tmp/nginx.pid && \
+    chown nginx:nginx /tmp/nginx.pid
+
 EXPOSE 80
+USER nginx

@@ -430,6 +430,12 @@
         "legalReserve": {
           "displayName": "Legal Reserve",
           "description": "Vectorize the legal reserve area of the property."
+        },
+        "ppaRiver": {
+          "displayName": "Permanent Protected Area (River)"
+        },
+        "ppaRiverUpTo10m": {
+          "displayName": "Permanent Protected Area (River up to 10m)"
         }
       }
     },
@@ -983,6 +989,12 @@
         "legalReserve": {
           "displayName": "Reserva Legal",
           "description": "Vetorize a área de reserva legal na propriedade."
+        },
+        "ppaRiver": {
+          "displayName": "Área de Proteção Permanentemente (Rio)"
+        },
+        "ppaRiverUpTo10m": {
+          "displayName": "Área de Proteção Permanentemente (Rio até 10m)"
         }
       }
     },
@@ -1543,6 +1555,12 @@
         "legalReserve": {
           "displayName": "Reserva Legal",
           "description": "Vectorizar el área de reserva legal de la propiedad."
+        },
+        "ppaRiver": {
+          "displayName": "Área de Protección Permanentemente (Río)"
+        },
+        "ppaRiverUpTo10m": {
+          "displayName": "Área de Protección Permanentemente (Río hasta 10m)"
         }
       }
     },

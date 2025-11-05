@@ -57,13 +57,12 @@ const checkDateLessThanToday = (valueToBeValidated: string) =>
 
 const registrarDetailsValidationSchema = {
   id: { required, $autoDirty: true },
-  dateOfBirth: { required, $autoDirty: true, date: dateValidator, max: checkDateLessThanToday },
+  dateOfBirth: { $autoDirty: true, date: dateValidator, max: checkDateLessThanToday },
   name: { required, $autoDirty: true },
   mothersName: { required, $autoDirty: true },
   representative: {
     id: { required: requiredIf(() => isRepresentativeRegistrarRequired.value) },
     dateOfBirth: {
-      required: requiredIf(() => isRepresentativeRegistrarRequired.value),
       date: dateValidator,
       max: checkDateLessThanToday,
     },
@@ -75,8 +74,8 @@ const registrarDetailsValidationSchema = {
 const landHoldersInformationValidationSchema = {
   legalPersonality: { required, $autoDirty: true },
   wayToAddLandholdersInformation: { required, $autoDirty: true },
-  id: {},
-  dateOfBirth: { required, $autoDirty: true, date: dateValidator, max: checkDateLessThanToday },
+  id: { required, $autoDirty: true },
+  dateOfBirth: { $autoDirty: true, date: dateValidator, max: checkDateLessThanToday },
   name: { required, $autoDirty: true },
   mothersName: { required, $autoDirty: true },
 }
@@ -104,7 +103,7 @@ const ruralPropertiesValidationSchema = {
 
 const propertyRightsValidationSchema = {
   propertyLandholding: { required, $autoDirty: true },
-  registeredPropertyName: { required,$autoDirty: true },
+  registeredPropertyName: { required, $autoDirty: true },
   area: { required, $autoDirty: true },
   documentType: { $autoDirty: true },
   titleDeedLandDocument: { $autoDirty: true },

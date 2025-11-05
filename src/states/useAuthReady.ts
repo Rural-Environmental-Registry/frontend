@@ -3,7 +3,6 @@ import { checkAuth } from '../services/authService'
 
 const authReady = ref(false)
 
-
 function initAuth() {
   if (import.meta.env.MODE === 'production') {
     authReady.value = checkAuth()

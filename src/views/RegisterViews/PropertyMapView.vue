@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 import MapaDpg from 'dpg-mapa/dist'
 import VectorizationToolPanel from '@/components/map/VectorizationToolPanel.vue'
@@ -34,6 +34,7 @@ const processingStatus = ref({
 })
 
 const router = useRouter()
+const route = useRoute()
 const { getLanguage, language } = useLanguageContext()
 const { validateRegistrationForm } = useFormContext()
 
@@ -49,6 +50,10 @@ const descriptiveMemorial = computed(() => {
 
 const displayedAreas = computed(() => {
   return Object.values(vectorizedLayer.value).filter((a) => a.vectorizedArea?.layer)
+})
+
+const currentGroup = computed(() => {
+  return vectorizationPanelRef.value?.currentStep?.group?.key || currentMapStep.value?.group?.key
 })
 
 const isFormValid = computed(() => {
@@ -211,16 +216,23 @@ const layerControlInjection = {
       vectorizationPanelRef.value?.toggleStep()
     }
   },
-  triggerVisibility: (item) => {
-    if (item.layerCode === PROPERTY_KEY) return
+  triggerVisibility: (layer) => {
+    const { layerCode } = layer
+    if (layerCode === PROPERTY_KEY) return
 
-    const layer = mapHandler.toggleLayerVisibility(item)
-    vectorizedLayer.value[item.layerCode].isVisible =
-      !vectorizedLayer.value[item.layerCode].isVisible
+    // pass the whole layer object so MapHandler can use either object or string
+    const toggled = mapHandler.toggleLayerVisibility(layer)
 
-    if (layer) {
-      vectorizedLayer.value[item.layerCode].vectorizedArea = layer
+    // if a layer object is returned (made visible), set it on the vectorized layer
+    if (toggled) {
+      vectorizedLayer.value[layerCode].vectorizedArea = toggled
     }
+
+    vectorizedLayer.value[layerCode].isVisible = !vectorizedLayer.value[layerCode].isVisible
+  },
+
+  triggerBufferVisibility: (bufferCode) => {
+    mapHandler.toggleLayerVisibility(bufferCode)
   },
 }
 
@@ -271,6 +283,30 @@ watch(
   },
   { immediate: true },
 )
+
+watch(
+  () => vectorizationPanelRef.value?.currentStep?.group?.key,
+  (newGroupKey) => {
+    if (newGroupKey && newGroupKey !== currentMapStep.value?.group?.key) {
+      saveMapState()
+    }
+  },
+)
+
+watch(
+  () => route.path,
+  () => {
+    if (route.path.includes('property_map')) {
+      nextTick(() => {
+        const mapState = mapHelpers.loadMapState()
+        if (mapState?.currentStep) {
+          currentMapStep.value = mapState.currentStep
+          vectorizationPanelRef.value?.toggleStep(mapState.currentStep.group.key)
+        }
+      })
+    }
+  },
+)
 </script>
 
 <template>
@@ -292,7 +328,7 @@ watch(
       />
     </div>
     <AreasDisplayPanel
-      :currentGroup="currentMapStep?.group?.key"
+      :currentGroup="currentGroup"
       :displayedAreas="displayedAreas"
       :layerControls="layerControlInjection"
     />

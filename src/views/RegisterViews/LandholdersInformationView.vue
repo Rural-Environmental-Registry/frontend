@@ -33,7 +33,7 @@ const legalPersinalityOfLandholderOptions = computed(() => [
       'register.landholdersInformation.form.landholderLegalPersonality.options.two',
     ),
     value: 'legal_entity',
-  }, */
+  }, */,
 ])
 
 // const wayToAddLandholdersInformationOptions = computed(() => [
@@ -63,7 +63,7 @@ const handleEditOwnerHolder = (data: LandHoldersData, index: number) => {
 }
 
 const handleSaveChanges = () => {
-  const requiredFields: (keyof LandHoldersData)[] = ['dateOfBirth', 'name', 'mothersName']
+  const requiredFields: (keyof LandHoldersData)[] = ['id', 'name', 'mothersName']
 
   const isValid = requiredFields.every((field) => {
     return (
@@ -196,6 +196,7 @@ const ownerHolderToRemove = ref<number | null>(null)
             :label="getLanguage('register.landholdersInformation.form.id')"
             id="id"
             v-model="newLandHoldersInformation.id"
+            :errors="validation.landHoldersInformation.id.$errors"
           />
         </div>
         <CalendarComponent

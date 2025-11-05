@@ -10,6 +10,7 @@ export default class MapHandler {
   private readonly _drawItemsGroup
   private readonly _closeCoordinatePanel
   private readonly _handlerCallback
+  private readonly _tempLayers: Record<string, any> = {}
 
   constructor(mapRef: any, handlerCallback: any) {
     this._map = mapRef.map
@@ -618,16 +619,25 @@ export default class MapHandler {
     this.toggleTools(data)
   }
 
-  public toggleLayerVisibility(layer: any): any {
-    if (layer.layerCode === PROPERTY_CODE) return
-    const foundLayer = this._drawItemsGroup.getLayer(layer.vectorizedArea.layer._leaflet_id)
+  // Accept either a layerCode string or a layer object with vectorizedArea
+  public toggleLayerVisibility(layerOrCode: any): any {
+    // normalize inputs
+    const isString = typeof layerOrCode === 'string'
+    const layerCode = isString ? layerOrCode : layerOrCode?.layerCode
 
-    if (foundLayer) {
+    if (layerCode === PROPERTY_CODE) return
+
+    // If caller passed a string, keep backward-compatible behavior
+    if (isString) {
+      if (this._tempLayers[layerCode]) {
+        this._drawItemsGroup.addLayer(this._tempLayers[layerCode])
+        this._tempLayers[layerCode] = null
+        return
+      }
+
       this._drawItemsGroup.eachLayer((lyr: any) => {
-        if (
-          lyr.options?.layerCode === layer.layerCode ||
-          lyr.options?.layerCode === layer.rules?.buffer?.layerCode
-        ) {
+        if (lyr.options?.layerCode === layerCode) {
+          this._tempLayers[layerCode] = lyr
           this._drawItemsGroup.removeLayer(lyr)
         }
       })
@@ -635,10 +645,44 @@ export default class MapHandler {
       return
     }
 
-    return this.processAppliedLayer(
-      this.applyLayerToMap(layer.vectorizedArea.layer),
-      layer.vectorizedArea.buffer,
-    )
+    // If caller passed a layer object, try to toggle using the underlying leaflet layer
+    try {
+      const vectorized = layerOrCode.vectorizedArea
+      const leafletLayer = vectorized?.layer
+
+      // if layer exists in the group (visible), remove it (and buffer if any)
+      const foundLayer = leafletLayer
+        ? this._drawItemsGroup.getLayer(leafletLayer._leaflet_id)
+        : null
+
+      if (foundLayer) {
+        // store and remove main layer
+        this._tempLayers[layerCode] = foundLayer
+        this._drawItemsGroup.removeLayer(foundLayer)
+
+        // also remove buffer layer(s) if rules specify
+        if (layerOrCode.rules?.buffer) {
+          const bufferCode = layerOrCode.rules.buffer.layerCode
+          this._drawItemsGroup.eachLayer((lyr: any) => {
+            if (lyr.options?.layerCode === bufferCode) {
+              this._tempLayers[bufferCode] = lyr
+              this._drawItemsGroup.removeLayer(lyr)
+            }
+          })
+        }
+
+        return
+      }
+
+      // if not found, add it back to the map -> applyLayerToMap then return processed layer data
+      if (leafletLayer) {
+        const applied = this.applyLayerToMap(leafletLayer)
+        return this.processAppliedLayer(applied)
+      }
+    } catch {
+      // swallow and return undefined to avoid breaking callers
+      return
+    }
   }
 
   public removeLayer(layer: any): void {

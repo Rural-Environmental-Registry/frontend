@@ -82,8 +82,8 @@ watch(
     documents.value.forEach((doc) => {
       doc.type = doc.documentType
         ? (doc.type = getLanguage(
-          `register.propertyRights.form.documentTypeOptions.${doc.documentType.toLowerCase()}`,
-        ))
+            `register.propertyRights.form.documentTypeOptions.${doc.documentType.toLowerCase()}`,
+          ))
         : ''
     })
   },
@@ -154,9 +154,20 @@ const handleRegistrationButton = async (event: Event) => {
 
           <button class="flex items-center primary-color px-3" @click="handleRegistrationButton">
             <template v-if="isDownloading">
-              <svg class="animate-spin h-5 w-5 text-green-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <svg
+                class="animate-spin h-5 w-5 text-green-600 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
               </svg>
             </template>
@@ -172,10 +183,17 @@ const handleRegistrationButton = async (event: Event) => {
     <!-- Map and Areas -->
     <div v-if="property" class="mx-3 flex flex-col lg:flex-row items-center gap-4 min-h-96">
       <section class="w-full lg:w-3/5 h-full flex justify-center items-center">
-        <img :src="image || placeholderImage" alt="Map example" class="object-contain w-full h-full" />
+        <img
+          :src="image || placeholderImage"
+          alt="Map example"
+          class="object-contain w-full h-full"
+        />
       </section>
 
-      <WholeWidthCardComponent bg-color="rgb(249,250,249)" class="w-full lg:w-2/5 p-4 flex flex-col min-h-96">
+      <WholeWidthCardComponent
+        bg-color="rgb(249,250,249)"
+        class="w-full lg:w-2/5 p-4 flex flex-col min-h-96"
+      >
         <h1 class="text-lg font-bold">{{ getLanguage('details.registeredAreas') }}</h1>
 
         <div class="flex flex-col sm:flex-row items-start sm:items-center mt-4 gap-2">
@@ -186,7 +204,9 @@ const handleRegistrationButton = async (event: Event) => {
         </div>
 
         <div class="mt-5 grid grid-cols-[40px_1fr_auto] items-center gap-2">
-          <div class="h-[30px] w-[30px] bg-[#9a9b9a] border-dashed border-[2px] border-[#f7ff00]"></div>
+          <div
+            class="h-[30px] w-[30px] bg-[#9a9b9a] border-dashed border-[2px] border-[#f7ff00]"
+          ></div>
           <h1 class="text-[17px] font-bold truncate">
             {{ getLanguage('layers.vectorization.ruralProperty.displayName') }}:
           </h1>
@@ -200,10 +220,15 @@ const handleRegistrationButton = async (event: Event) => {
           </p>
         </div>
 
-        <div v-for="subarea in subAreas" :key="subarea.id"
-          class="mt-3 grid grid-cols-[40px_1fr_auto] items-center gap-2">
-          <div class="h-[30px] w-[30px] border border-gray-300"
-            :style="{ backgroundColor: subarea.layerData?.rules.style.color }"></div>
+        <div
+          v-for="subarea in subAreas"
+          :key="subarea.id"
+          class="mt-3 grid grid-cols-[40px_1fr_auto] items-center gap-2"
+        >
+          <div
+            class="h-[30px] w-[30px] border border-gray-300"
+            :style="{ backgroundColor: subarea.layerData?.rules.style.color }"
+          ></div>
 
           <h1 class="text-[17px] font-bold truncate">
             {{ getLanguage(subarea.layerData?.displayNameKey!) }}:
@@ -216,10 +241,15 @@ const handleRegistrationButton = async (event: Event) => {
           </p>
         </div>
 
-        <div v-for="bufferArea in bufferAreas" :key="bufferArea.id"
-          class="mt-3 grid grid-cols-[40px_1fr_auto] items-center gap-2">
-          <div class="h-[30px] w-[30px] border border-gray-300"
-            :style="{ backgroundColor: bufferArea.layerData?.rules.buffer.style.color }"></div>
+        <div
+          v-for="bufferArea in bufferAreas"
+          :key="bufferArea.id"
+          class="mt-3 grid grid-cols-[40px_1fr_auto] items-center gap-2"
+        >
+          <div
+            class="h-[30px] w-[30px] border border-gray-300"
+            :style="{ backgroundColor: bufferArea.layerData?.rules.buffer.style.color }"
+          ></div>
 
           <h1 class="text-[17px] font-bold truncate">
             Buffer {{ getLanguage(bufferArea.layerData?.displayNameKey!) }}:
@@ -255,8 +285,11 @@ const handleRegistrationButton = async (event: Event) => {
         </div>
       </div>
 
-      <div v-for="owner in property.owners" :key="owner.id"
-        class="px-3 py-2 grid grid-cols-2 sm:grid-cols-5 gap-4 border-b">
+      <div
+        v-for="owner in property.owners"
+        :key="owner.id"
+        class="px-3 py-2 grid grid-cols-2 sm:grid-cols-5 gap-4 border-b"
+      >
         <div :title="owner.name">
           <p>{{ owner.name }}</p>
         </div>
@@ -281,7 +314,9 @@ const handleRegistrationButton = async (event: Event) => {
     <WholeWidthCardComponent v-if="property" bg-color="rgb(249,250,249)">
       <h1 class="text-lg font-bold px-3 py-2">{{ getLanguage('details.registrars') }}</h1>
 
-      <div class="px-3 py-2 mt-2 grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_1fr_1fr] gap-4 border-b">
+      <div
+        class="px-3 py-2 mt-2 grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_1fr_1fr] gap-4 border-b"
+      >
         <div>
           <p>{{ getLanguage('register.propertyRights.list.type.title') }}</p>
         </div>
@@ -302,15 +337,21 @@ const handleRegistrationButton = async (event: Event) => {
         </div>
       </div>
 
-      <div v-for="doc in documents" :key="doc.id"
-        class="px-3 py-2 grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_1fr_1fr] gap-4 border-b">
+      <div
+        v-for="doc in documents"
+        :key="doc.id"
+        class="px-3 py-2 grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_1fr_1fr] gap-4 border-b"
+      >
         <div :title="getLanguage(`register.propertyRights.list.type.${doc.holdingType}`)">
           <p>{{ getLanguage(`register.propertyRights.list.type.${doc.holdingType}`) }}</p>
         </div>
-        <div :title="getLanguage(
-          `register.propertyRights.form.documentTypeOptions.${doc.documentType.toLowerCase()}`,
-        )
-          ">
+        <div
+          :title="
+            getLanguage(
+              `register.propertyRights.form.documentTypeOptions.${doc.documentType.toLowerCase()}`,
+            )
+          "
+        >
           <p>
             {{ doc.type }}
           </p>

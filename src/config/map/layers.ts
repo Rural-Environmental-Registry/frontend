@@ -302,7 +302,6 @@ export default {
           drawTools: ['polygon'],
           rules: {
             required: false,
-            maxInstances: 1,
             overlap: true,
             geometryType: 'Polygon',
             geometricUnit: 'ha',
@@ -314,6 +313,8 @@ export default {
             },
             buffer: {
               layerCode: 'PPA_WIDER_THAN_10M',
+              displayName: 'PPA River',
+              displayNameKey: 'layers.vectorization.ppaRiver.displayName',
               style: {
                 color: '#FF8C00',
                 weight: 3,
@@ -334,7 +335,6 @@ export default {
           drawTools: ['polyline'],
           rules: {
             required: false,
-            maxInstances: 1,
             overlap: true,
             geometryType: 'LineString',
             lineMaxLength: 10,
@@ -347,6 +347,8 @@ export default {
             },
             buffer: {
               layerCode: 'PPA_UP_TO_10M',
+              displayName: 'PPA River (up to 10m)',
+              displayNameKey: 'layers.vectorization.ppaRiverUpTo10m.displayName',
               style: {
                 color: '#FF8C00',
                 weight: 3,

@@ -33,8 +33,8 @@
         </div>
         <div
           v-if="!verticalAlignment && index % 2 === 0 && showDivider"
-            class="w-0.5 h-full mx-5 my-0 bg-gray-600 rounded-lg">
-        </div>
+          class="w-0.5 h-full mx-5 my-0 bg-gray-600 rounded-lg"
+        ></div>
       </div>
     </div>
   </div>

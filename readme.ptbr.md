@@ -1,8 +1,44 @@
-# RER-DPG - Core-Frontend
+# RER - Frontend
+
+[![Vue.js](https://img.shields.io/badge/Vue.js-3-green.svg)](https://vuejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)](https://www.typescriptlang.org/) [![Vite](https://img.shields.io/badge/Vite-5-purple.svg)](https://vitejs.dev/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-38bdf8.svg)](https://tailwindcss.com/) [![Leaflet](https://img.shields.io/badge/Leaflet-1.9-green.svg)](https://leafletjs.com/) [![Docker](https://img.shields.io/badge/Docker-24+-blue.svg)](https://www.docker.com/)
+
+## 📑 Índice
+
+- [RER - Frontend](#rer---frontend)
+  - [📑 Índice](#-índice)
+  - [Sobre o Módulo](#sobre-o-módulo)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalação e Execução](#instalação-e-execução)
+    - [Execução Integrada](#execução-integrada)
+    - [Desenvolvimento Local](#desenvolvimento-local)
+      - [Configuração de Acesso ao Repositório Privado](#configuração-de-acesso-ao-repositório-privado)
+      - [Instalação de dependências](#instalação-de-dependências)
+      - [Desenvolvimento com Hot-Reload](#desenvolvimento-com-hot-reload)
+      - [Build de Produção](#build-de-produção)
+    - [Execução com Docker](#execução-com-docker)
+  - [Acesso aos Serviços](#acesso-aos-serviços)
+  - [Funcionalidades](#funcionalidades)
+    - [Interface Principal](#interface-principal)
+    - [Geração de Configurações](#geração-de-configurações)
+    - [Tecnologias](#tecnologias)
+  - [Estrutura do Projeto](#estrutura-do-projeto)
+  - [Scripts Disponíveis](#scripts-disponíveis)
+  - [Configurações](#configurações)
+    - [Variáveis de Ambiente](#variáveis-de-ambiente)
+    - [Integração com Mapa](#integração-com-mapa)
+  - [Gerenciamento de Containers](#gerenciamento-de-containers)
+    - [Verificar Status](#verificar-status)
+    - [Parar Serviços](#parar-serviços)
+    - [Logs](#logs)
+  - [Licença](#licença)
+  - [Contribuição](#contribuição)
+  - [Suporte](#suporte)
+
+---
 
 ## Sobre o Módulo
 
-O **Core-Frontend** é a interface web moderna do RER-DPG, desenvolvida em Vue.js 3 com Vite. Oferece uma experiência de usuário responsiva e intuitiva para o cadastro e visualização de dados ambientais rurais, integrando-se perfeitamente com o componente de mapa e os serviços de backend.
+O **frontend** é a interface web moderna do RER, desenvolvida em Vue.js 3 com Vite. Oferece uma experiência de usuário responsiva e intuitiva para o cadastro e visualização de dados ambientais rurais, integrando-se perfeitamente com o componente de mapa e os serviços de backend.
 
 **Principais características:**
 
@@ -28,7 +64,7 @@ O **Core-Frontend** é a interface web moderna do RER-DPG, desenvolvida em Vue.j
 
 ### Execução Integrada
 
-Este módulo é executado automaticamente como parte do sistema RER-DPG principal. Para executar o sistema completo:
+Este módulo é executado automaticamente como parte do sistema RER principal. Para executar o sistema completo:
 
 1. **No diretório principal do projeto:**
    ```bash
@@ -124,7 +160,7 @@ Este script consolida informações de:
 ## Estrutura do Projeto
 
 ```
-Core-Frontend/
+frontend/
 ├── public/
 │   ├── images/                 # Imagens estáticas
 │   └── favicon.ico
@@ -235,7 +271,7 @@ docker-compose logs -f
 
 ## Licença
 
-Este projeto é distribuído sob a [Licença MIT](https://opensource.org/license/mit).
+Este projeto é distribuído sob a [GPL-3.0](https://github.com/Rural-Environmental-Registry/core/blob/main/LICENSE).
 
 ---
 
@@ -249,6 +285,19 @@ Contribuições são bem-vindas! Para contribuir:
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+Ao submeter um pull request ou patch, você afirma que é o autor do código e que concorda em licenciar sua contribuição sob os termos da Licença Pública Geral GNU v3.0 (ou posterior) deste projeto. Você também concorda em ceder os direitos autorais da sua contribuição ao Ministério da Gestão e Inovação em Serviços Públicos (MGI), titular deste projeto.
+
 ---
 
-**Desenvolvido pela Superintendência de Inteligência Artificial e Inovação da Dataprev**
+## Suporte
+
+Para suporte técnico ou dúvidas sobre o projeto:
+
+- **Documentação:** Consulte os READMEs individuais de cada submódulo
+- **Issues:** Reporte problemas através do sistema de issues do repositório
+ 
+---
+
+Copyright (C) 2024-2025 Ministério da Gestão e Inovação em Serviços Públicos (MGI), Governo do Brasil.
+
+Este programa foi desenvolvido pela Dataprev como parte de um contrato com o Ministério da Gestão e Inovação em Serviços Públicos (MGI).

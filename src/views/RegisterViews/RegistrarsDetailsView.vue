@@ -178,9 +178,7 @@ onMounted(() => {
       />
       <CalendarComponent
         :label="
-          getLanguage('register.registrarDetails.form.dateOfBirth') +
-          ' ' +
-          getLanguage('register.registrarDetails.form.required')
+          getLanguage('register.registrarDetails.form.dateOfBirth')
         "
         id="dob"
         v-model="formData.registrarDetails.dateOfBirth"

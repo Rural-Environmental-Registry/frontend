@@ -114,10 +114,10 @@ const visiblePages = computed(() => {
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-5">
     <div class="br-card rounded max-w-[380px] h-[400px] bg-[#F8FAF9]">
-      <div class="mb-2 mt-3 mr-2 ml-3">
+      <div class="mb-2 mt-3 mr-2 ml-3 flex flex-col justify-center h-[76%] pt-8">
         <img
-          src="/images/property_owner.png"
-          alt="Property owner"
+          src="/images/Logo-RER.png"
+          alt="Logo RER"
           width="250"
           height="230"
           class="mt-5 mx-auto"

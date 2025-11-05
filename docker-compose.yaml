@@ -1,8 +1,7 @@
-version: '3'
 services:
 
-  front:
-    # image: vuejscardpgfrontend:0.0.1
+  core-frontend:
+    image: rer-frontend:latest
     build:
       dockerfile: Dockerfile
       context: .
@@ -10,8 +9,10 @@ services:
         - GITLAB_TOKEN=${GITLAB_TOKEN}
         - HTTP_PROXY=${HTTP_PROXY}
         - HTTPS_PROXY=${HTTPS_PROXY}
+        - NO_PROXY=
         - APP_VERSION=${APP_VERSION}
-    container_name: vuejs-car-dpg-frontend
-    ports:
-      - "5000:80"
+    container_name: core-frontend
     restart: unless-stopped
+    networks:
+      # - frontend_network
+      - gateway_network

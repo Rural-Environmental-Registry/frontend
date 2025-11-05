@@ -132,8 +132,44 @@ describe('AreasDisplayPanel.vue', () => {
       },
     })
     const otherLayer = wrapper.findAll('li')[1]
-    await otherLayer.findAll('button')[2].trigger('click')
-    expect(mockLayerControls.triggerDelete).toHaveBeenCalledWith(mockDisplayedAreas[1])
+    const deleteButton = otherLayer
+      .findAll('button')
+      .find((b) => b.attributes('title') === 'mapComponents.areasDisplayPanel.removeLayer')
+    expect(deleteButton).toBeDefined()
+    if (deleteButton) {
+      await deleteButton.trigger('click')
+      expect(mockLayerControls.triggerDelete).toHaveBeenCalledWith(mockDisplayedAreas[1])
+    }
+  })
+
+  it('should not show delete button when item does not belong to current group', () => {
+    wrapper = mount(AreasDisplayPanel, {
+      props: {
+        displayedAreas: mockDisplayedAreas,
+        layerControls: mockLayerControls,
+        currentGroup: 'group2',
+      },
+    })
+    const otherLayer = wrapper.findAll('li')[1]
+    const deleteButton = otherLayer
+      .findAll('button')
+      .find((b) => b.attributes('title') === 'mapComponents.areasDisplayPanel.removeLayer')
+    expect(deleteButton).toBeUndefined()
+  })
+
+  it('should show edit button even when item does not belong to current group', () => {
+    wrapper = mount(AreasDisplayPanel, {
+      props: {
+        displayedAreas: mockDisplayedAreas,
+        layerControls: mockLayerControls,
+        currentGroup: 'group2',
+      },
+    })
+    const otherLayer = wrapper.findAll('li')[1]
+    const editButton = otherLayer
+      .findAll('button')
+      .find((b) => b.attributes('title') === 'mapComponents.areasDisplayPanel.editLayer')
+    expect(editButton).toBeDefined()
   })
 
   it('should display N/A when area is not available', () => {

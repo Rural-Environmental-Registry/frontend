@@ -17,7 +17,6 @@ import { useValidatorContext } from '@/context/validators/useValidatorContext'
 import router from '@/router'
 import axios from '@/services/axios'
 import { buildFormData } from '@/services/propertiesService'
-import { fetchReceipt } from '@/services/propertiesService'
 
 import DiffAreaConfig from '@/config/diff_area.json'
 import type { AxiosResponse } from 'axios'

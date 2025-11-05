@@ -1,4 +1,3 @@
-
 import { jwtDecode } from 'jwt-decode'
 
 type jwtDecodedToken = {
@@ -14,7 +13,6 @@ function handleAuthAndLang(lang: string, token: string): boolean {
 }
 
 export const checkAuth = (): boolean => {
-
   const params = new URLSearchParams(window.location.search)
   const codeParams = params.get('code')
   const issParams = params.get('iss')

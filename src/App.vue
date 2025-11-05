@@ -17,7 +17,7 @@ const { authReady } = useAuthReady()
       <LanguageContext>
         <div class="flex flex-col min-h-screen">
           <div v-if="!authReady" class="flex flex-col min-h-screen items-center justify-center">
-            <div class="br-loading" role="progressbar" ></div>
+            <div class="br-loading" role="progressbar"></div>
           </div>
           <template v-else>
             <NavBarComponent />

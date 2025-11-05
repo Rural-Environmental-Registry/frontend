@@ -85,7 +85,11 @@ const cityState = (el: any) => {
         <td>{{ getLanguage(`register.propertyRights.list.type.${el.propertyLandholding}`) }}</td>
         <td>
           {{
-            el.documentType ? getLanguage(`register.propertyRights.form.documentTypeOptions.${String(el.documentType).toLowerCase()}`) : ''
+            el.documentType
+              ? getLanguage(
+                  `register.propertyRights.form.documentTypeOptions.${String(el.documentType).toLowerCase()}`,
+                )
+              : ''
           }}
         </td>
         <td>{{ el.titleDeedLandDocument }}</td>
