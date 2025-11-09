@@ -1,5 +1,5 @@
 import './assets/index.css'
-import 'dpg-mapa/dist/index.css'
+import '@rural-environmental-registry/map_component/dist/index.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'

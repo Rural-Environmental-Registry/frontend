@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
-import MapaDpg from 'dpg-mapa/dist'
+import MapaDpg from '@rural-environmental-registry/map_component'
 import VectorizationToolPanel from '@/components/map/VectorizationToolPanel.vue'
 import AreasDisplayPanel from '@/components/map/AreasDisplayPanel.vue'
 
