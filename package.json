@@ -32,7 +32,7 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "dotenv": "16.5.0",
-    "@rural-environmental-registry/map_component": "^3.0.0",
+    "@rural-environmental-registry/map_component": "^1.0.0",
     "flatpickr": "^4.6.13",
     "html-to-image": "1.11.13",
     "jwt-decode": "4.0.0",
