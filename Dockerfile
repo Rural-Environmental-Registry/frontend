@@ -5,42 +5,21 @@ FROM node:18-alpine AS dependencies
 
 # Atualizar pacotes para corrigir CVEs e instalar necessários
 RUN apk update && apk upgrade --no-cache && \
-    apk add --no-cache \
-    git \
-    jq
+    apk add --no-cache jq
 
 WORKDIR /app
 
 # Copiar apenas arquivos de dependências primeiro
 COPY package.json package-lock.json ./
-COPY scripts/map-dependency.cjs ./scripts/
-
-ARG GITLAB_TOKEN
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-ARG NO_PROXY
-
-# Configurar proxy e git antes de instalar dependências
-RUN git config --global http.proxy "" && \
-    git config --global https.proxy "" && \
-    git config --global no.proxy "" && \
-    git config --global url."https://gitlab-ci-token:Rf6Lm95AxDznCdQAa6cm@inovacao.dataprev.gov.br".insteadOf "https://inovacao.dataprev.gov.br"
 
 # Instalar dependências com cache otimizado
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci --ignore-scripts
+    npm ci
 
 # ============================
-# 2) Process Dependencies Stage
+# 2) Build Stage
 # ============================
-FROM dependencies AS deps-processed
-COPY ./Map-Component /app/Map-Component
-RUN node scripts/map-dependency.cjs
-
-# ============================
-# 3) Build Stage
-# ============================
-FROM deps-processed AS build
+FROM dependencies AS build
 COPY . .
 ARG APP_VERSION
 ENV APP_VERSION=0.0.0
@@ -49,7 +28,7 @@ RUN echo "0.0.0" > dist/version.txt
 RUN sh scripts/generate-config.sh
 
 # ============================
-# 4) Runtime Stage
+# 3) Runtime Stage
 # ============================
 FROM nginx:alpine
 
