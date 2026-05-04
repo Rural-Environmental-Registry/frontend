@@ -44,7 +44,7 @@ vi.mock('@/config/diff_area.json', () => ({
   default: { layer_code: 'PROPERTY' },
 }))
 
-vi.mock('dpg-mapa/dist', () => ({
+vi.mock('@rural-environmental-registry/map_component', () => ({
   default: {
     name: 'MapaDpg',
     template: '<div data-testid="map-component"></div>',
