@@ -10,7 +10,7 @@ RUN apk update && apk upgrade --no-cache && \
 WORKDIR /app
 
 # Copiar apenas arquivo de dependências primeiro
-COPY package.json ./
+COPY package.json package-lock.json ./
 
 # Instalar dependências com cache otimizado
 RUN --mount=type=cache,target=/root/.npm \
@@ -31,6 +31,9 @@ RUN sh scripts/generate-config.sh
 # 3) Runtime Stage
 # ============================
 FROM nginx:alpine
+
+# Atualizar pacotes para corrigir CVEs
+RUN apk update && apk upgrade --no-cache
 
 COPY --from=build /app/dist/ /usr/share/nginx/html/rectest
 RUN rm -f /etc/nginx/conf.d/default.conf

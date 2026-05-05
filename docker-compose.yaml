@@ -6,11 +6,7 @@ services:
       dockerfile: Dockerfile
       context: .
       args:
-        - GITLAB_TOKEN=${GITLAB_TOKEN}
-        - HTTP_PROXY=${HTTP_PROXY}
-        - HTTPS_PROXY=${HTTPS_PROXY}
-        - NO_PROXY=
-        - APP_VERSION=${APP_VERSION}
+        - APP_VERSION=0.0.0
     container_name: core-frontend
     restart: unless-stopped
     networks:
