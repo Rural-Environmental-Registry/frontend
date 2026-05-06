@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { createApp } from 'vue'
 
 vi.mock('./assets/index.css', () => ({}))
-vi.mock('dpg-mapa/dist/index.css', () => ({}))
+vi.mock('@rural-environmental-registry/map_component/dist/index.css', () => ({}))
 vi.mock('../src/App.vue', () => ({
   default: {
     name: 'App',

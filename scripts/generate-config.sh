@@ -4,7 +4,7 @@ set -e
 
 export $(grep -v '^#' .env | xargs)
 
-CONSTANTS_PATH="node_modules/dpg-mapa/src/handlers/constants.ts"
+CONSTANTS_PATH="node_modules/@rural-environmental-registry/map_component/src/handlers/constants.ts"
 
 MAP_CENTER=$(grep 'center:' "$CONSTANTS_PATH" | sed -E 's/.*center:\s*\[([^]]+)\].*/[\1]/')
 MAP_CENTER="[$MAP_CENTER]" 
@@ -25,7 +25,7 @@ PACKAGE_VERSION=$(jq -r '.version' "$PACKAGE_JSON")
 
 DEFAULT_LANGUAGE=$(jq -r '.defaultlanguage // "en-us"' "$LANGUAGES_JSON")
 
-MAP_LAYERS_PATH="$ROOT_DIR/node_modules/dpg-mapa/src/assets/layers/mapLayers.json"
+MAP_LAYERS_PATH="$ROOT_DIR/node_modules/@rural-environmental-registry/map_component/src/assets/layers/mapLayers.json"
 
 if [ -f "$MAP_LAYERS_PATH" ]; then
   CAMADAS_MAPA=$(jq -c '.mapLayers' "$MAP_LAYERS_PATH")

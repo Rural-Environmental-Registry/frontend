@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+# Cópia local gerada pelo start.sh (fonte em /map_component na raiz do repositório)
+map_component
 .DS_Store
 dist
 dist-ssr
