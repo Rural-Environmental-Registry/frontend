@@ -10,7 +10,7 @@ RUN apk update && apk upgrade --no-cache && \
 WORKDIR /app
 
 # Copiar apenas arquivo de dependências primeiro
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Instalar dependências com cache otimizado
 RUN --mount=type=cache,target=/root/.npm \
@@ -45,7 +45,8 @@ RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp \
     chown -R nginx:nginx /var/cache/nginx && \
     chmod -R 755 /var/cache/nginx && \
     touch /tmp/nginx.pid && \
-    chown nginx:nginx /tmp/nginx.pid
+    chown nginx:nginx /tmp/nginx.pid && \
+    chown -R nginx:nginx /var/log/nginx
 
-EXPOSE 80
+EXPOSE 8080
 USER nginx
