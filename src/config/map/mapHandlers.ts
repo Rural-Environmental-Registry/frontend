@@ -8,12 +8,14 @@ const PROPERTY_PANE = 'rerPropertyBasePane'
 const VECTOR_OVERLAY_PANE = 'rerVectorOverlayPane'
 
 import { processLayerService } from '@/services/calculationEngineService'
+import { createStableMarker } from '@rural-environmental-registry/map_component'
 
 export default class MapHandler {
   private readonly _map
   private readonly _leaflet
   private readonly _drawItemsGroup
   private readonly _closeCoordinatePanel
+  private readonly _centerMap
   private readonly _handlerCallback
   private readonly _tempLayers: Record<string, any> = {}
 
@@ -22,6 +24,7 @@ export default class MapHandler {
     this._leaflet = mapRef.leaflet
     this._drawItemsGroup = mapRef.drawItemsGroup
     this._closeCoordinatePanel = mapRef.closeCoordinatePanel
+    this._centerMap = mapRef.centerMap?.bind(mapRef)
     this._handlerCallback = handlerCallback
 
     this.init()
@@ -32,10 +35,43 @@ export default class MapHandler {
   /* Controls and tools */
   private init(): void {
     this.ensureDrawPanes()
+    this.configureGeomanPanes()
     this.addPositionControl()
-    this.addCustomControlSlot()
     this.blockSelfIntersection()
     this.attachPmCursorHandlers()
+  }
+
+  private createPointMarker(latlng: any, layerCode: string, rules: any, style?: any): any {
+    const icon = style?.icon ? this.createCustomMarker(style) : undefined
+
+    return createStableMarker(this._leaflet, latlng, {
+      layerCode,
+      rules,
+      icon
+    })
+  }
+
+  private createCustomMarker(drawStyle: any): any {
+    if (!drawStyle.icon) return
+
+    const { icon, color = '#000000' } = drawStyle
+
+    return this._leaflet.divIcon({
+      className: 'leaflet-div-icon rer-map-marker-icon',
+      html: `<div class="rer-map-marker-icon__inner" style="color: ${color};"><i class="${icon}"></i></div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16],
+    })
+  }
+
+  private configureGeomanPanes(): void {
+    this._map.pm.setGlobalOptions({
+      panes: {
+        vertexPane: 'markerPane',
+        markerPane: 'markerPane',
+        layerPane: 'overlayPane',
+      },
+    })
   }
 
   /** Separa propriedade e demais geometrias em panes (z-index), além da ordem no FeatureGroup. */
@@ -56,21 +92,9 @@ export default class MapHandler {
     }
   }
 
-  private paneForLayerCode(layerCode: string | undefined): string {
+  private paneForLayerCode(layerCode: string | undefined, geometryType?: string): string {
+    if (geometryType === 'Point') return 'markerPane'
     return layerCode === PROPERTY_CODE ? PROPERTY_PANE : VECTOR_OVERLAY_PANE
-  }
-
-  private createCustomMarker(drawStyle: any): any {
-    if (!drawStyle.icon) return
-
-    const { icon, color = '#000000' } = drawStyle
-
-    return this._leaflet.divIcon({
-      className: 'custom-div-icon',
-      html: `<div style="color: ${color};"><i class="${icon}"/></div>`,
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
-    })
   }
 
   private setCustomMarker(drawStyle: any): void {
@@ -78,23 +102,7 @@ export default class MapHandler {
 
     if (!customMarker) return
 
-    this._map.pm.setGlobalOptions({ markerStyle: { icon: customMarker } })
-  }
-
-  private addCustomControlSlot() {
-    const CustomControlSlot = this._leaflet.Control.extend({
-      options: {
-        position: 'topright',
-      },
-      onAdd: () => {
-        return this._leaflet.DomUtil.create(
-          'div',
-          'leaflet-control-layers leaflet-control leaflet-control-custom d-none',
-        )
-      },
-    })
-
-    this._map.addControl(new CustomControlSlot())
+    this._map.pm.setGlobalOptions({ markerStyle: { icon: customMarker, pane: 'markerPane' } })
   }
 
   private blockSelfIntersection(): void {
@@ -107,60 +115,22 @@ export default class MapHandler {
     this._map.on('pm:drawstart', () => {
       const el = container()
       if (el) el.style.cursor = 'crosshair'
+      if (this._map.doubleClickZoom.enabled()) {
+        this._map.doubleClickZoom.disable()
+      }
     })
 
     const resetCursor = () => {
       const el = container()
       if (el) el.style.cursor = ''
+      if (!this._map.doubleClickZoom.enabled()) {
+        this._map.doubleClickZoom.enable()
+      }
     }
 
     this._map.on('pm:drawend', resetCursor)
     this._map.on('pm:drawcancel', resetCursor)
     this._map.on('pm:remove', resetCursor)
-  }
-
-  private getCustomContainer(): any {
-    const controlContainer = this._map.getContainer().querySelector('.leaflet-control-custom')
-    controlContainer.classList.remove('d-none')
-
-    return controlContainer
-  }
-
-  private addCentralizationControl(bounds: any): void {
-    const CentralizationControl = this._leaflet.Control.extend({
-      options: {
-        position: 'topright',
-      },
-      onAdd: () => {
-        const controlContainer = this.getCustomContainer()
-        const btn = this._leaflet.DomUtil.create(
-          'button',
-          'w-8 h-8 centralization-btn hover:bg-gray-200 rounded-[10px]',
-          controlContainer,
-        )
-
-        btn.innerHTML = '<i class="fa fa-crosshairs text-gray-600"/>'
-        btn.style.cursor = 'pointer'
-        btn.style.textAlign = 'center'
-
-        this._leaflet.DomEvent.on(btn, 'click', (e: any) => {
-          e.stopPropagation()
-          e.preventDefault()
-          if (bounds) {
-            this._map.fitBounds(bounds)
-          }
-        })
-        return controlContainer
-      },
-    })
-
-    this._map.addControl(new CentralizationControl())
-  }
-
-  private addCentralizationButton(layer: any): void {
-    const layerId = layer._leaflet_id
-    const bounds = this._drawItemsGroup.getLayer(layerId).getBounds()
-    this.addCentralizationControl(bounds)
   }
 
   private addPositionControl(): void {
@@ -240,11 +210,6 @@ export default class MapHandler {
     }
   }
 
-  private removeCentralizationButton(): void {
-    const centralizationButton = this._map.getContainer().querySelector('.centralization-btn')
-    this._leaflet.DomUtil.remove(centralizationButton)
-  }
-
   /* Map rules */
   private matchLayers(processedLayers: any, vectorizedLayers: any): any {
     for (const key in vectorizedLayers) {
@@ -257,12 +222,42 @@ export default class MapHandler {
     processedLayers.forEach((lyr: any) => {
       const opts = vectorizedLayers[lyr.properties.layerCode]
       if (!opts) return
+
+      const isPointLayer =
+        lyr.geometry?.type === 'Point' || opts.rules?.geometryType === 'Point'
+
+      let buffer = null
+      if (opts.rules?.buffer) {
+        buffer = processedLayers.find(
+          (l: any) => l.properties.layerCode === opts.rules.buffer.layerCode,
+        )
+      }
+
+      if (isPointLayer) {
+        const [lng, lat] = lyr.geometry.coordinates
+        const latlng = this._leaflet.latLng(lat, lng)
+        const marker = this.createPointMarker(
+          latlng,
+          opts.layerCode,
+          opts.rules,
+          opts.rules?.style,
+        )
+        marker.options.restored = true
+        this.addUpdatedLayer(marker)
+
+        vectorizedLayers[lyr.properties.layerCode].vectorizedArea = this.processAppliedLayer(
+          marker,
+          buffer,
+        )
+        return
+      }
+
       const options = {
         layerCode: opts.layerCode,
         rules: opts.rules,
         restored: true,
         ...opts.rules.style,
-        pane: this.paneForLayerCode(opts.layerCode),
+        pane: this.paneForLayerCode(opts.layerCode, opts.rules?.geometryType),
       }
 
       const layer = this._leaflet.geoJson(lyr, options)
@@ -271,13 +266,6 @@ export default class MapHandler {
 
       if (layer.options.layerCode === PROPERTY_CODE) {
         this._map.fitBounds(appliedLayer.getBounds())
-      }
-
-      let buffer = null
-      if (options.rules?.buffer) {
-        buffer = processedLayers.find(
-          (l: any) => l.properties.layerCode === options.rules.buffer.layerCode,
-        )
       }
 
       vectorizedLayers[lyr.properties.layerCode].vectorizedArea = this.processAppliedLayer(
@@ -396,7 +384,15 @@ export default class MapHandler {
     copyLayer.options.layerCode = propertyInfo.layerCode
     copyLayer.options.rules = propertyInfo.rules
 
-    if (isMemorial) {
+    if (propertyInfo.rules?.geometryType === 'Point' && typeof layer.getLatLng === 'function') {
+      const latlng = layer.getLatLng()
+      copyLayer = this.createPointMarker(
+        latlng,
+        propertyInfo.layerCode,
+        propertyInfo.rules,
+        propertyInfo.rules?.style,
+      )
+    } else if (isMemorial) {
       copyLayer.options = {
         ...copyLayer.options,
         ...propertyInfo.rules.style,
@@ -412,8 +408,12 @@ export default class MapHandler {
     const layerJson = this.getJsonFeatures(layer)
     const { type } = layerJson.geometry
     const layerOptions = { ...layer.options }
-    if (!layerOptions.pane && layerOptions.layerCode) {
-      layerOptions.pane = this.paneForLayerCode(layerOptions.layerCode)
+    const geometryType = layerOptions.rules?.geometryType as string | undefined
+
+    if (geometryType === 'Point') {
+      delete layerOptions.pane
+    } else if (!layerOptions.pane && layerOptions.layerCode) {
+      layerOptions.pane = this.paneForLayerCode(layerOptions.layerCode, geometryType)
     }
 
     const isPolyAllowed = type === 'MultiPolygon' && layerOptions.rules.geometryType === 'Polygon'
@@ -444,18 +444,11 @@ export default class MapHandler {
     }
 
     if (preparedLayerTypes[type] === 'Point') {
-      // used to redraw the icon when restored from state
-      if ((layerOptions.restored || layerOptions.memorialKey) && layer.options?.rules?.style) {
-        const customMarker = this.createCustomMarker(layer.options.rules.style)
-        layer = this._leaflet.geoJson(layerJson, {
-          pointToLayer: (feature: any, latlng: any) => {
-            return this._leaflet.marker(latlng, {
-              icon: customMarker,
-            })
-          },
-          ...layerOptions,
-        })
-      }
+      const pointStyle = layerOptions.rules?.style
+      const [lng, lat] = layerJson.geometry.coordinates
+      const latlng = this._leaflet.latLng(lat, lng)
+
+      layer = this.createPointMarker(latlng, layerOptions.layerCode, layerOptions.rules, pointStyle)
 
       this.addUpdatedLayer(layer)
       return layer
@@ -496,12 +489,9 @@ export default class MapHandler {
       const copyLayer = this.buildLayerToDraw(editedLayer, layer.options)
       const isPropertyLayer = copyLayer.options?.layerCode === PROPERTY_CODE
 
-      const appliedLayer = this.applyLayerToMap(copyLayer)
+      this._drawItemsGroup.removeLayer(layer)
 
-      const generateDuplicates = copyLayer.options.rules.geometryType !== 'Point'
-      if (generateDuplicates) {
-        this._drawItemsGroup.removeLayer(layer)
-      }
+      const appliedLayer = this.applyLayerToMap(copyLayer)
 
       const newLayer = this.processAppliedLayer(appliedLayer)
 
@@ -520,7 +510,6 @@ export default class MapHandler {
       this._handlerCallback({ event: 'changedState' })
 
       if (isPropertyLayer) {
-        this.removeCentralizationButton()
         this._drawItemsGroup.removeLayer(editedLayer)
         this._drawItemsGroup.removeLayer(appliedLayer)
         this._handlerCallback({ event: 'refreshMap' })
@@ -634,8 +623,6 @@ export default class MapHandler {
 
       const appliedLayer = this.applyLayerToMap(copyLayer)
 
-      if (layerCode === PROPERTY_CODE) this.addCentralizationButton(appliedLayer)
-
       if (!isMemorial) {
         this.finishDrawing(rules)
       } else {
@@ -653,16 +640,22 @@ export default class MapHandler {
 
     options.restored = true
     this.ensureDrawPanes()
+
+    if (options.rules?.geometryType === 'Point') {
+      const [lng, lat] = geoJson.geometry?.coordinates ?? [0, 0]
+      const latlng = this._leaflet.latLng(lat, lng)
+      const layer = this.createPointMarker(latlng, options.layerCode, options.rules, options.rules?.style)
+      layer.options.restored = true
+      this.addUpdatedLayer(layer)
+      return this.processAppliedLayer(layer, buffer)
+    }
+
     if (!options.pane && options.layerCode) {
-      options.pane = this.paneForLayerCode(options.layerCode)
+      options.pane = this.paneForLayerCode(options.layerCode, options.rules?.geometryType)
     }
     const layer = this._leaflet.geoJson(geoJson, options)
 
     const appliedLayer = this.applyLayerToMap(layer)
-
-    if (layer.options.layerCode === PROPERTY_CODE) {
-      this.addCentralizationButton(appliedLayer)
-    }
 
     return this.processAppliedLayer(appliedLayer, buffer)
   }
@@ -824,7 +817,6 @@ export default class MapHandler {
     let isPropertyRemoved = false
 
     if (layer.layerCode === PROPERTY_CODE) {
-      this.removeCentralizationButton()
       isPropertyRemoved = true
     }
 
@@ -861,8 +853,7 @@ export default class MapHandler {
   }
 
   public centralizeMap(): void {
-    const btn = this._map.getContainer().querySelector('.centralization-btn')
-    btn?.click()
+    this._centerMap?.()
   }
 
   public async processLayersOnAPI(vectorizedLayers: any): Promise<any> {

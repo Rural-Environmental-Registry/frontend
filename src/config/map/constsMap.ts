@@ -61,6 +61,9 @@ export const MapOptions = {
       dragging: true,
       scrollWheelZoom: true,
       doubleClickZoom: true,
+      preferCanvas: false,
+      markerZoomAnimation: false,
+      stabilizeMarkersOnZoom: true,
     },
   },
   layersMenu: {
@@ -78,6 +81,30 @@ export const MapOptions = {
       drawPolyline: false,
       editMode: false,
       removalMode: false,
+    },
+  },
+  tools: {
+    show: true,
+    position: 'topright',
+    fullscreen: { show: true, title: 'Fullscreen' },
+    center: { show: true, title: 'Center map', target: 'drawn' },
+    measureArea: {
+      show: true,
+      title: 'Measure',
+    },
+    texts: {
+      measureResult: 'Measurement',
+      measureLength: 'Distance',
+      measureArea: 'Area',
+      measurePanelTitle: 'Measure distances and areas',
+      measureLineTitle: 'Measure line',
+      measurePolygonTitle: 'Measure polygon',
+      measureLineHelp: 'Click two points on the map. Double-click to finish the line.',
+      measurePolygonHelp:
+        'Click to add vertices. Finish on the first point, use Finish, or double-click.',
+      measureCancel: 'Cancel',
+      measureFinish: 'Finish measurement',
+      noGeometry: 'No geometry to center on',
     },
   },
 }
