@@ -1,8 +1,8 @@
 declare module '@rural-environmental-registry/map_component' {
   import { DefineComponent } from 'vue'
-  import type { LatLngExpression, Map, FeatureGroup, Marker } from 'leaflet'
+  import type { LatLngExpression, Map, FeatureGroup, Marker, MarkerOptions } from 'leaflet'
 
-  export type StableMarkerOptions = import('leaflet').MarkerOptions & Record<string, unknown>
+  export type StableMarkerOptions = MarkerOptions & Record<string, unknown>
 
   export const STABLE_MARKER_DEFAULTS: StableMarkerOptions
 
