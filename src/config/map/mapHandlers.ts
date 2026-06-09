@@ -123,7 +123,7 @@ export default class MapHandler {
     const resetCursor = () => {
       const el = container()
       if (el) el.style.cursor = ''
-      if (!this._map.doubleClickZoom.enabled()) {
+      if (this._map.doubleClickZoom && !this._map.doubleClickZoom.enabled()) {
         this._map.doubleClickZoom.enable()
       }
     }
