@@ -19,8 +19,8 @@ coverage
 # Environment
 .env
 .env.development
-.env.production
-.env.*
+.env.local
+.env.*.local
 
 /cypress/videos/
 /cypress/screenshots/
