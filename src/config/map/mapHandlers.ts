@@ -41,7 +41,7 @@ export default class MapHandler {
     this.attachPmCursorHandlers()
   }
 
-  private createPointMarker(latlng: any, layerCode: string, rules: any, style?: any): any {
+  private createPointMarker(latlng: any, layerCode: string | undefined, rules: any, style?: any): any {
     const icon = style?.icon ? this.createCustomMarker(style) : undefined
 
     return createStableMarker(this._leaflet, latlng, {
