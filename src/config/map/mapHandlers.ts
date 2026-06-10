@@ -52,7 +52,7 @@ export default class MapHandler {
   }
 
   private createCustomMarker(drawStyle: any): any {
-    if (!drawStyle.icon) return
+    if (!drawStyle?.icon) return
 
     const { icon, color = '#000000' } = drawStyle
 
