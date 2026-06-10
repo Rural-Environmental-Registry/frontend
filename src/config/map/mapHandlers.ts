@@ -233,7 +233,7 @@ export default class MapHandler {
         )
       }
 
-      if (isPointLayer) {
+      if (isPointLayer && lyr.geometry?.coordinates) {
         const [lng, lat] = lyr.geometry.coordinates
         const latlng = this._leaflet.latLng(lat, lng)
         const marker = this.createPointMarker(
