@@ -65,7 +65,7 @@ export default class MapHandler {
   }
 
   private configureGeomanPanes(): void {
-    this._map.pm.setGlobalOptions({
+    this._map.pm?.setGlobalOptions({
       panes: {
         vertexPane: 'markerPane',
         markerPane: 'markerPane',
