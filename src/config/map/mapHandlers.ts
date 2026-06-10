@@ -115,7 +115,7 @@ export default class MapHandler {
     this._map.on('pm:drawstart', () => {
       const el = container()
       if (el) el.style.cursor = 'crosshair'
-      if (this._map.doubleClickZoom.enabled()) {
+      if (this._map.doubleClickZoom?.enabled()) {
         this._map.doubleClickZoom.disable()
       }
     })
