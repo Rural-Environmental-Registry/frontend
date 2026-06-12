@@ -219,6 +219,7 @@ export default class MapHandler {
     this._drawItemsGroup.clearLayers()
 
     this.ensureDrawPanes()
+    if (!Array.isArray(processedLayers)) return
     processedLayers.forEach((lyr: any) => {
       const opts = vectorizedLayers[lyr.properties.layerCode]
       if (!opts) return
