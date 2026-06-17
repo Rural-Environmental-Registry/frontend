@@ -446,7 +446,8 @@ export default class MapHandler {
 
     if (preparedLayerTypes[type] === 'Point') {
       const pointStyle = layerOptions.rules?.style
-      const [lng, lat] = layerJson.geometry.coordinates
+      const coordinates = layerJson.geometry?.coordinates
+      const [lng, lat] = Array.isArray(coordinates) && coordinates.length >= 2 ? coordinates : [0, 0]
       const latlng = this._leaflet.latLng(lat, lng)
 
       layer = this.createPointMarker(latlng, layerOptions.layerCode, layerOptions.rules, pointStyle)
@@ -643,7 +644,7 @@ export default class MapHandler {
     this.ensureDrawPanes()
 
     if (options.rules?.geometryType === 'Point') {
-      const coordinates = geoJson.geometry?.coordinates
+      const coordinates = geoJson?.geometry?.coordinates
       const [lng, lat] = Array.isArray(coordinates) && coordinates.length >= 2 ? coordinates : [0, 0]
       const latlng = this._leaflet.latLng(lat, lng)
       const layer = this.createPointMarker(latlng, options.layerCode, options.rules, options.rules?.style)

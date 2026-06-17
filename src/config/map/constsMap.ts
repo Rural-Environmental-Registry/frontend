@@ -1,5 +1,17 @@
 import Layers from '@/config/map/layers.ts'
 import languages from '@/config/languages.json'
+import { DEFAULT_LANGUAGE, normalizeLanguage, type SupportedLanguage } from '@/utils/language'
+
+/** Memorial descritivo usa inglês independente do idioma da UI. */
+export const DESCRIPTIVE_MEMORIAL_LANGUAGE: SupportedLanguage = DEFAULT_LANGUAGE
+
+export const getTranslatedDescriptiveMemorial = (lang?: string) => {
+  const normalized = normalizeLanguage(lang ?? DESCRIPTIVE_MEMORIAL_LANGUAGE)
+  return (
+    languages[normalized as SupportedLanguage]?.descriptiveMemorial ??
+    languages[DEFAULT_LANGUAGE].descriptiveMemorial
+  )
+}
 
 export const MAP_LAYERS = Layers
 
@@ -46,9 +58,6 @@ export function getTranslatedLayers(getLanguageFn: (key: string) => string) {
 
   return layersCopy
 }
-
-type Lang = 'en-us' | 'pt-br' | 'es-es'
-export const getTranslatedDescriptiveMemorial = (lang: Lang) => languages[lang].descriptiveMemorial
 
 export const MapOptions = {
   map: {

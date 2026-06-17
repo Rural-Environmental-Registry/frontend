@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { provide, onMounted, watch, type Ref, ref } from 'vue'
 import languages from '@/config/languages.json'
+import { DEFAULT_LANGUAGE, normalizeLanguage } from '@/utils/language'
 
 type LanguagesType = {
   defaultlanguage: string
@@ -18,27 +19,24 @@ export type LanguageContextType = {
   getLanguage: (key: string) => string
 }
 
-const defaultLanguage = languages.defaultlanguage
-
-const language = ref(localStorage.getItem('language') || defaultLanguage)
+const language = ref(normalizeLanguage(localStorage.getItem('language')))
 
 const setLanguage = (newLang: string) => {
-  language.value = newLang
+  language.value = normalizeLanguage(newLang)
 }
 
 const getLanguage = (key: string): string => {
   const keys = key.split('.')
-  let result: any = typedLanguages[language.value]
+  let result: unknown = typedLanguages[normalizeLanguage(language.value)]
 
-  keys.forEach((k) => {
-    if (result && result[k]) {
-      result = result[k]
-    } else {
-      result = key
+  for (const k of keys) {
+    if (result == null || typeof result !== 'object' || !(k in result)) {
+      return key
     }
-  })
+    result = (result as Record<string, unknown>)[k]
+  }
 
-  return result
+  return typeof result === 'string' ? result : key
 }
 
 provide<LanguageContextType>('languageContext', {
@@ -55,6 +53,10 @@ watch(
 )
 
 onMounted(() => {
+  const normalized = normalizeLanguage(language.value)
+  if (normalized !== language.value) {
+    language.value = normalized
+  }
   localStorage.setItem('language', language.value)
 })
 </script>
