@@ -1,5 +1,17 @@
 import Layers from '@/config/map/layers.ts'
 import languages from '@/config/languages.json'
+import { DEFAULT_LANGUAGE, normalizeLanguage, type SupportedLanguage } from '@/utils/language'
+
+/** Memorial descritivo usa inglês independente do idioma da UI. */
+export const DESCRIPTIVE_MEMORIAL_LANGUAGE: SupportedLanguage = DEFAULT_LANGUAGE
+
+export const getTranslatedDescriptiveMemorial = (lang?: string) => {
+  const normalized = normalizeLanguage(lang ?? DESCRIPTIVE_MEMORIAL_LANGUAGE)
+  return (
+    languages[normalized as SupportedLanguage]?.descriptiveMemorial ??
+    languages[DEFAULT_LANGUAGE].descriptiveMemorial
+  )
+}
 
 export const MAP_LAYERS = Layers
 
@@ -47,9 +59,6 @@ export function getTranslatedLayers(getLanguageFn: (key: string) => string) {
   return layersCopy
 }
 
-type Lang = 'en-us' | 'pt-br' | 'es-es'
-export const getTranslatedDescriptiveMemorial = (lang: Lang) => languages[lang].descriptiveMemorial
-
 export const MapOptions = {
   map: {
     config: {
@@ -61,6 +70,9 @@ export const MapOptions = {
       dragging: true,
       scrollWheelZoom: true,
       doubleClickZoom: true,
+      preferCanvas: false,
+      markerZoomAnimation: false,
+      stabilizeMarkersOnZoom: true,
     },
   },
   layersMenu: {
@@ -78,6 +90,30 @@ export const MapOptions = {
       drawPolyline: false,
       editMode: false,
       removalMode: false,
+    },
+  },
+  tools: {
+    show: true,
+    position: 'topright',
+    fullscreen: { show: true, title: 'Fullscreen' },
+    center: { show: true, title: 'Center map', target: 'drawn' },
+    measureArea: {
+      show: true,
+      title: 'Measure',
+    },
+    texts: {
+      measureResult: 'Measurement',
+      measureLength: 'Distance',
+      measureArea: 'Area',
+      measurePanelTitle: 'Measure distances and areas',
+      measureLineTitle: 'Measure line',
+      measurePolygonTitle: 'Measure polygon',
+      measureLineHelp: 'Click two points on the map. Double-click to finish the line.',
+      measurePolygonHelp:
+        'Click to add vertices. Finish on the first point, use Finish, or double-click.',
+      measureCancel: 'Cancel',
+      measureFinish: 'Finish measurement',
+      noGeometry: 'No geometry to center on',
     },
   },
 }
