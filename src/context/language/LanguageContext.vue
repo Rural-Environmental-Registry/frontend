@@ -27,7 +27,7 @@ const setLanguage = (newLang: string) => {
 
 const getLanguage = (key: string): string => {
   const keys = key.split('.')
-  let result: unknown = typedLanguages[normalizeLanguage(language.value)]
+  let result: unknown = typedLanguages[language.value]
 
   for (const k of keys) {
     if (result == null || typeof result !== 'object' || !(k in result)) {

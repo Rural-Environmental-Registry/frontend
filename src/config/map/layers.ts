@@ -3,9 +3,11 @@ const geoserverBase = (import.meta.env.VITE_GEOSERVER_URL || '').replace(
   import.meta.env.VITE_BASE_URL || '',
 )
 // Leaflet WMS exige o endpoint /wms; /geoserver sozinho cai no redirect 301 do nginx
-const GEOSERVER_URL = geoserverBase.endsWith('/wms')
-  ? geoserverBase
-  : `${geoserverBase.replace(/\/$/, '')}/wms`
+const GEOSERVER_URL = geoserverBase
+  ? geoserverBase.endsWith('/wms')
+    ? geoserverBase
+    : `${geoserverBase.replace(/\/$/, '')}/wms`
+  : ''
 
 export default {
   mapLayers: [

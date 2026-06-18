@@ -17,22 +17,19 @@ import {
 import { RouterLink } from 'vue-router'
 import { faGlobe, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useLanguageContext } from '@/context/language/useLanguageContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const { language, setLanguage, getLanguage } = useLanguageContext()
 
-const selectedLanguage = ref(language.value)
-
-watch(language, (newLang) => {
-  selectedLanguage.value = newLang
-})
-
-watch(selectedLanguage, (newLang) => {
-  if (newLang !== language.value) {
-    setLanguage(newLang)
-  }
+const selectedLanguage = computed({
+  get: () => language.value,
+  set: (newLang) => {
+    if (newLang !== language.value) {
+      setLanguage(newLang)
+    }
+  },
 })
 </script>
 

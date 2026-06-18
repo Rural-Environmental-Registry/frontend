@@ -212,6 +212,8 @@ export default class MapHandler {
 
   /* Map rules */
   private matchLayers(processedLayers: any, vectorizedLayers: any): any {
+    if (!vectorizedLayers || !Array.isArray(processedLayers)) return vectorizedLayers
+
     for (const key in vectorizedLayers) {
       vectorizedLayers[key].vectorizedArea = null
     }
@@ -219,7 +221,6 @@ export default class MapHandler {
     this._drawItemsGroup.clearLayers()
 
     this.ensureDrawPanes()
-    if (!Array.isArray(processedLayers)) return
     processedLayers.forEach((lyr: any) => {
       const opts = vectorizedLayers[lyr.properties.layerCode]
       if (!opts) return
@@ -234,8 +235,9 @@ export default class MapHandler {
         )
       }
 
-      if (isPointLayer && lyr.geometry?.coordinates) {
-        const [lng, lat] = lyr.geometry.coordinates
+      const coordinates = lyr.geometry?.coordinates
+      if (isPointLayer && Array.isArray(coordinates) && coordinates.length >= 2) {
+        const [lng, lat] = coordinates
         const latlng = this._leaflet.latLng(lat, lng)
         const marker = this.createPointMarker(
           latlng,
