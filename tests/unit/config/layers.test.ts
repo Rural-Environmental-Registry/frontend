@@ -1,5 +1,23 @@
 import { describe, it, expect } from 'vitest'
-import layers from '../../../src/config/map/layers'
+import layers, { resolveGeoserverWmsUrl } from '../../../src/config/map/layers'
+
+describe('resolveGeoserverWmsUrl', () => {
+  it('appends /wms when base has no wms suffix', () => {
+    expect(resolveGeoserverWmsUrl('/geoserver')).toBe('/geoserver/wms')
+  })
+
+  it('keeps base unchanged when it already ends with /wms', () => {
+    expect(resolveGeoserverWmsUrl('/geoserver/wms')).toBe('/geoserver/wms')
+  })
+
+  it('does not duplicate /wms when base ends with /wms/', () => {
+    expect(resolveGeoserverWmsUrl('/geoserver/wms/')).toBe('/geoserver/wms')
+  })
+
+  it('returns empty string for empty base', () => {
+    expect(resolveGeoserverWmsUrl('')).toBe('')
+  })
+})
 
 describe('config/map/layers (static)', () => {
   it('exports mapLayers and customLayers arrays', () => {
@@ -15,10 +33,11 @@ describe('config/map/layers (static)', () => {
   })
 
   it('replaces GEOSERVER_URL base placeholder with VITE_BASE_URL', () => {
-    const expectedBase = import.meta.env.VITE_GEOSERVER_URL.replace(
+    const rawBase = import.meta.env.VITE_GEOSERVER_URL.replace(
       '/{baseUrl}',
       import.meta.env.VITE_BASE_URL,
     )
+    const expectedBase = resolveGeoserverWmsUrl(rawBase)
 
     const withBase = layers.customLayers
       .flatMap((g: any) => g.layers || [])

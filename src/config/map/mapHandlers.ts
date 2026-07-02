@@ -413,14 +413,19 @@ export default class MapHandler {
     const layerOptions = { ...layer.options }
     const geometryType = layerOptions.rules?.geometryType as string | undefined
 
+    if (!geometryType) {
+      this._handlerCallback({ event: 'mapErrors', error: { errorType: 'invalidType' } })
+      throw new Error('invalid type')
+    }
+
     if (geometryType === 'Point') {
       delete layerOptions.pane
     } else if (!layerOptions.pane && layerOptions.layerCode) {
       layerOptions.pane = this.paneForLayerCode(layerOptions.layerCode, geometryType)
     }
 
-    const isPolyAllowed = type === 'MultiPolygon' && layerOptions.rules.geometryType === 'Polygon'
-    const isSameType = type === layerOptions.rules.geometryType
+    const isPolyAllowed = type === 'MultiPolygon' && geometryType === 'Polygon'
+    const isSameType = type === geometryType
     if (!isSameType && !isPolyAllowed) {
       this._handlerCallback({ event: 'mapErrors', error: { errorType: 'invalidType' } })
       throw new Error('invalid type')
