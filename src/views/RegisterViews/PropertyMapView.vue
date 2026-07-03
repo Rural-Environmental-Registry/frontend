@@ -44,7 +44,7 @@ const showDescriptiveMemorial = ref(false)
 const descriptiveMemorial = computed(() => {
   return {
     show: showDescriptiveMemorial.value,
-    customTexts: getTranslatedDescriptiveMemorial(language.value),
+    customTexts: getTranslatedDescriptiveMemorial(),
   }
 })
 
