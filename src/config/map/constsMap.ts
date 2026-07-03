@@ -3,7 +3,7 @@ import languages from '@/config/languages.json'
 import { DEFAULT_LANGUAGE, normalizeLanguage, type SupportedLanguage } from '@/utils/language'
 
 /** Memorial descritivo usa inglês independente do idioma da UI. */
-export const DESCRIPTIVE_MEMORIAL_LANGUAGE: SupportedLanguage = DEFAULT_LANGUAGE
+export const DESCRIPTIVE_MEMORIAL_LANGUAGE: SupportedLanguage = 'en-us'
 
 export const getTranslatedDescriptiveMemorial = (lang?: string) => {
   const normalized = normalizeLanguage(lang ?? DESCRIPTIVE_MEMORIAL_LANGUAGE)
