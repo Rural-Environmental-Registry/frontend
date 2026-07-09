@@ -17,6 +17,9 @@ describe('resolveGeoserverWmsUrl', () => {
   it('returns empty string for empty base', () => {
     expect(resolveGeoserverWmsUrl('')).toBe('')
   })
+  it('resolves single slash to /wms', () => {
+    expect(resolveGeoserverWmsUrl('/')).toBe('/wms')
+  })
 })
 
 describe('config/map/layers (static)', () => {

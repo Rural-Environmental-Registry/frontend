@@ -5,6 +5,7 @@ const geoserverBase = (import.meta.env.VITE_GEOSERVER_URL || '').replace(
 
 /** Normaliza base do GeoServer para o endpoint WMS exigido pelo Leaflet. */
 export function resolveGeoserverWmsUrl(geoserverBase: string): string {
+  if (!geoserverBase) return ''
   const normalizedBase = geoserverBase.replace(/\/$/, '')
   return normalizedBase
     ? normalizedBase.endsWith('/wms')
