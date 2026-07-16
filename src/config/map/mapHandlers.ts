@@ -557,10 +557,17 @@ export default class MapHandler {
       calculatedLength.km = drawnLength
     }
 
+    const rawAreaFromProps = layerJson.properties?.area
+    const haFromProps =
+      typeof rawAreaFromProps === 'number'
+        ? rawAreaFromProps
+        : Number(rawAreaFromProps)
+    const ha = Number.isFinite(haFromProps) && haFromProps > 0 ? haFromProps : drawnArea / 10000
+
     const calculatedArea = {
       m2: drawnArea,
       km2: drawnArea / 1000000,
-      ha: layerJson.properties?.area || drawnArea / 10000,
+      ha,
     }
 
     const areas = {
