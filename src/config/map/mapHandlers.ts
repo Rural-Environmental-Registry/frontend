@@ -413,14 +413,19 @@ export default class MapHandler {
     const layerOptions = { ...layer.options }
     const geometryType = layerOptions.rules?.geometryType as string | undefined
 
+    if (!geometryType) {
+      this._handlerCallback({ event: 'mapErrors', error: { errorType: 'invalidType' } })
+      throw new Error('invalid type')
+    }
+
     if (geometryType === 'Point') {
       delete layerOptions.pane
     } else if (!layerOptions.pane && layerOptions.layerCode) {
       layerOptions.pane = this.paneForLayerCode(layerOptions.layerCode, geometryType)
     }
 
-    const isPolyAllowed = type === 'MultiPolygon' && layerOptions.rules.geometryType === 'Polygon'
-    const isSameType = type === layerOptions.rules.geometryType
+    const isPolyAllowed = type === 'MultiPolygon' && geometryType === 'Polygon'
+    const isSameType = type === geometryType
     if (!isSameType && !isPolyAllowed) {
       this._handlerCallback({ event: 'mapErrors', error: { errorType: 'invalidType' } })
       throw new Error('invalid type')
@@ -552,10 +557,17 @@ export default class MapHandler {
       calculatedLength.km = drawnLength
     }
 
+    const rawAreaFromProps = layerJson.properties?.area
+    const haFromProps =
+      typeof rawAreaFromProps === 'number'
+        ? rawAreaFromProps
+        : Number(rawAreaFromProps)
+    const ha = Number.isFinite(haFromProps) && haFromProps > 0 ? haFromProps : drawnArea / 10000
+
     const calculatedArea = {
       m2: drawnArea,
       km2: drawnArea / 1000000,
-      ha: layerJson.properties?.area || drawnArea / 10000,
+      ha,
     }
 
     const areas = {
