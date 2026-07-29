@@ -38,7 +38,7 @@
     "jwt-decode": "4.0.0",
     "lucide-vue-next": "0.475.0",
     "radix-vue": "1.9.14",
-    "reka-ui": "2.2.1",
+    "reka-ui": "2.10.1",
     "tailwind-merge": "3.0.2",
     "tailwindcss-animate": "1.0.7",
     "vue": "3.5.13",
