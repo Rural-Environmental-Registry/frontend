@@ -10,6 +10,7 @@ MAP_CENTER=$(grep 'center:' "$CONSTANTS_PATH" | sed -E 's/.*center:\s*\[([^]]+)\
 MAP_CENTER="[$MAP_CENTER]" 
 
 MAP_ZOOM=$(grep 'zoom:' "$CONSTANTS_PATH" | sed -E 's/.*zoom:\s*([0-9]+).*/\1/' | tail -n 1)
+MAP_ZOOM=${MAP_ZOOM:-5}
 
 ROOT_DIR=$(dirname "$(dirname "$(realpath "$0")")")
 PACKAGE_JSON="$ROOT_DIR/package.json"
