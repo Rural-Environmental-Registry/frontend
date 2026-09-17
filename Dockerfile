@@ -16,21 +16,11 @@ COPY package.json package-lock.json ./
 # 2) Process Dependencies Stage
 # ============================
 FROM dependencies AS deps-processed
-# Pacote local referenciado em package.json como file:./map_component
-COPY map_component/package.json map_component/package-lock.json ./map_component/
-
-# Instala dependências do map_component (lock file versionado)
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --prefix map_component
-
-# Instalar dependências com cache otimizado
+# map_component is consumed as a published npm dependency
+# (@rural-environmental-registry/map_component in package.json, resolved from
+# the npm registry via package-lock.json). No local copy/build is needed.
 RUN --mount=type=cache,target=/root/.npm \
     npm ci --ignore-scripts
-
-COPY ./map_component ./map_component
-
-# Build da biblioteca de mapa (frontend consome dist/index.mjs)
-RUN npm run build --prefix map_component
 
 # ============================
 # 3) Build Stage
