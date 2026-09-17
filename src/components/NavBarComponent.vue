@@ -17,16 +17,19 @@ import {
 import { RouterLink } from 'vue-router'
 import { faGlobe, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useLanguageContext } from '@/context/language/useLanguageContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const { language, setLanguage, getLanguage } = useLanguageContext()
 
-const selectedLanguage = ref(language)
-
-watch(selectedLanguage, (newLang) => {
-  setLanguage(newLang)
+const selectedLanguage = computed({
+  get: () => language.value,
+  set: (newLang) => {
+    if (newLang !== language.value) {
+      setLanguage(newLang)
+    }
+  },
 })
 </script>
 
@@ -45,7 +48,7 @@ watch(selectedLanguage, (newLang) => {
         </RouterLink>
         <div class="flex gap-3 pr-4">
           <div>
-            <Select v-model="selectedLanguage" @update:modelValue="setLanguage">
+            <Select v-model="selectedLanguage">
               <SelectTrigger class="w-[200px] rounded border-gray-600/80">
                 <FontAwesomeIcon :icon="faGlobe" style="color: #a9a9a9" class="cursor-pointer" />
                 <SelectValue

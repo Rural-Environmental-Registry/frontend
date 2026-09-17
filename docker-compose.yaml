@@ -7,6 +7,11 @@ services:
       context: .
       args:
         - APP_VERSION=0.0.0
+        - VITE_BASE_URL=/
+        - VITE_DPG_URL=http://localhost/cardpgbackend/v1
+        - VITE_AUTH_MODULE_URL=http://localhost/auth
+        - VITE_CALCULATION_ENGINE_BASE_URL=http://localhost/calculation-engine
+        - VITE_GEOSERVER_URL=http://localhost/geoserver/wms
     container_name: core-frontend
     restart: unless-stopped
     networks:
