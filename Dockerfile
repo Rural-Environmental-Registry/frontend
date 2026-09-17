@@ -39,16 +39,13 @@ FROM deps-processed AS build
 COPY . .
 ARG APP_VERSION
 ARG VITE_BASE_URL=/
-ARG VITE_DPG_URL=/
-ARG VITE_AUTH_MODULE_URL=/auth
-ARG VITE_CALCULATION_ENGINE_BASE_URL=/calculation-engine
-ARG VITE_GEOSERVER_URL=/geoserver
 ENV APP_VERSION=$APP_VERSION
 ENV VITE_BASE_URL=$VITE_BASE_URL
-ENV VITE_DPG_URL=$VITE_DPG_URL
-ENV VITE_AUTH_MODULE_URL=$VITE_AUTH_MODULE_URL
-ENV VITE_CALCULATION_ENGINE_BASE_URL=$VITE_CALCULATION_ENGINE_BASE_URL
-ENV VITE_GEOSERVER_URL=$VITE_GEOSERVER_URL
+# VITE_DPG_URL, VITE_AUTH_MODULE_URL, VITE_CALCULATION_ENGINE_BASE_URL and
+# VITE_GEOSERVER_URL are intentionally NOT set as ENV here: they are read from
+# the versioned .env.production so that a single source of truth drives the
+# build. Setting them as ENV would override .env.production and reintroduce
+# wrong values (e.g. /geoserver instead of /geoserver/wms).
 RUN npm run build-only
 RUN echo "$APP_VERSION" > dist/version.txt
 RUN sh scripts/generate-config.sh
