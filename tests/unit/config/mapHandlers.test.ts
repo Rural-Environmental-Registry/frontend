@@ -920,6 +920,27 @@ describe('MapHandler - Complete Coverage Tests', () => {
       }
       expect(() => mapHandler['applyLayerToMap'](layer)).toThrow('invalid type')
     })
+
+    it('should throw invalid type when rules are missing in applyLayerToMap', () => {
+      const layer = {
+        options: {},
+        toGeoJSON: vi.fn(() => ({
+          type: 'Feature',
+          geometry: {
+            type: 'Polygon',
+            coordinates: [
+              [
+                [0, 0],
+                [1, 0],
+                [1, 1],
+                [0, 0],
+              ],
+            ],
+          },
+        })),
+      }
+      expect(() => mapHandler['applyLayerToMap'](layer)).toThrow('invalid type')
+    })
   })
 
   describe('Integration Tests', () => {
